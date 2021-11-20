@@ -1,0 +1,43 @@
+:root{
+    --primary-color:#77B9F2;
+    --white-color:#fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Roboto','Cabin', sans-serif; */
+}
+/* Team Member Section */
+.team__member{
+    .team__header{
+        h4{
+            color:var(--primary-color);
+            font-size: 2rem;
+        }  
+        h2{
+            font-size: 3rem;
+        }
+    }
+    .team__item{
+        cursor: pointer;
+        h5{
+            color:var(--white-color);
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+        img{
+            transition: all 0.2s ease-in-out;
+            border-radius: 25px 25px 25px 0;
+        }
+    }
+    .team__item:hover{
+        h5{
+           color:var(--primary-color);
+           margin-bottom: 1rem;
+        }
+        img{
+           transform: scale(1.1);
+        }
+    }
+}

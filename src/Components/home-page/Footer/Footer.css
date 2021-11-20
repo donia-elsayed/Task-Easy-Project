@@ -1,0 +1,9 @@
+footer {
+  background-image: linear-gradient(to right, #8dcbf2 0%, #e5859b 60%);
+}
+footer p {
+  color: white !important;
+}
+footer a {
+  text-decoration: none;
+}

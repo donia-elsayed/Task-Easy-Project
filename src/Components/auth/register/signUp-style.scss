@@ -1,0 +1,60 @@
+
+.register__section{
+    background-image: url(../../../assets/images/bg-right.png),url(../../../assets/images/first-plan-bg.png);
+    background-position: right,left;
+    background-repeat: no-repeat,no-repeat;
+    background-size: contain,contain;
+    height: 100vh;
+    overflow: hidden;
+    .register__form{
+        background-color: #fff;
+        height: 70vh;    
+        border-radius: 1.5rem; 
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+        box-shadow: 0 5px 15px rgb(219, 224, 211);
+        form{
+            .register__btn{
+                background-color: #e5859b;
+            }
+            
+            div{
+                position: relative;
+                .signUp__option::before{
+                    content: '';
+                    position: absolute;
+                    width: 7rem;
+                    height: 0.2rem;
+                    top:50%;
+                    background-color: #e5859b;
+                }
+                .signUp__opt::after{
+                    content: '';
+                    position: absolute;
+                    width: 7rem;
+                    height: 0.2rem;
+                    background-color: #e5859b;
+                    top:50%;
+                    right: 25%;
+                }
+            }
+            
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width:1200px){
+    .register__form{
+        height: 100vh;
+        .register__image{
+            width:70%
+        }
+        .register__form__item{
+            width:90%;
+            Form.Label{
+              color:#77B9F2;
+            }
+        }
+    }
+}
