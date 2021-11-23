@@ -12,32 +12,45 @@ import UpdateProfile from './edit-profile/UpdateProfile'
 import NavBar  from './home-page/Navbar/Nav';
 import Profile from '../Components/edit-profile/Profile';
 import Todo from './add-todo/Todo';
+import ChatView from "../Components/layout/ChatView"
+import SecondUserProvider from './context/secondUser';
 function App() {
   return (
     <>
       <Router>
         <AuthProvider>
-        <NavBar/>
-        <Routes>
-          <Route  exact path="/" element={<MainPage/>}/>
-          <Route path="/login-home" element={<PrivateRoute/>}>
-            <Route path='/login-home' element={<SideBar/>}/>
-          </Route>
-          <Route exact path="/profile" element={<PrivateRoute/>}>
-            <Route exact path='/profile' element={<Profile/>}/>
-          </Route>
-          <Route exact path="/add-todo" element={<PrivateRoute/>}>
-            <Route exact path='/add-todo' element={<Todo/>}/>
-          </Route>
-          
-          <Route path="/update-profile" element={<PrivateRoute/>}>
-            <Route path='/update-profile' element={<UpdateProfile/>}/>
-          </Route>
-          <Route path="/signUp" element={<SignUp/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
-        </Routes>
-      </AuthProvider>
+          <SecondUserProvider>
+            <NavBar/>
+            <Routes>
+              <Route  exact path="/" element={<MainPage/>}/>
+              <Route path="/login-home" element={<PrivateRoute/>}>
+                <Route path='/login-home' element={<SideBar/>}/>
+              </Route>
+              <Route exact path="/profile" element={<PrivateRoute/>}>
+                <Route exact path='/profile' element={<Profile/>}/>
+              </Route>
+              <Route exact path="/add-todo" element={<PrivateRoute/>}>
+                <Route exact path='/add-todo' element={<Todo/>}/>
+              </Route>
+              <Route exact path="/chat" element={<PrivateRoute/>}>
+                <Route exact path='/chat' element={<ChatView/>}/>
+              </Route>
+              <Route exact path="/charts" element={<PrivateRoute/>}>
+                <Route exact path='/charts' element={<Todo/>}/>
+              </Route>
+              <Route exact path="/all-files" element={<PrivateRoute/>}>
+                <Route exact path='/all-files' element={<Todo/>}/>
+              </Route>
+
+              <Route path="/update-profile" element={<PrivateRoute/>}>
+                <Route path='/update-profile' element={<UpdateProfile/>}/>
+              </Route>
+              <Route path="/signUp" element={<SignUp/>}></Route>
+              <Route path="/login" element={<Login/>}></Route>
+              <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
+            </Routes>
+          </SecondUserProvider>
+        </AuthProvider>
     </Router>
     {/* <MainPage/>  */}
     </>

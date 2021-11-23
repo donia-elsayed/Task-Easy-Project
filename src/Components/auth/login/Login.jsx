@@ -49,6 +49,7 @@ function Login() {
                 name: user.displayName,
                 authProvider: "google",
                 email: user.email,
+                photoURL:user.photoURL
               });
             }
             navigate("/login-home")

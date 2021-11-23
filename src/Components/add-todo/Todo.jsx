@@ -6,14 +6,12 @@ import { tasksCollection } from "../../firebase";
 import { Droppable, DragDropContext, Draggable } from "react-beautiful-dnd";
 import { v4 } from "uuid";
 import MydModalWithGrid from "./Modal";
-import Tabs from "../tabs/Tabs"
+import FeaturesTabs from "../tabs/Tabs"
 import "./Todo.css";
 //drag and drop must be strings
 
 function Todo() {
   const [tasks] = useCollectionData(tasksCollection, { idField: "id" });
-  console.log(tasks, "collection");
-
   const [text, setText] = useState(tasks);
   const [modalShow, setModalShow] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,7 +29,6 @@ function Todo() {
       items: [],
     },
   });
-  console.log(state, "data");
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
       return;
@@ -119,8 +116,13 @@ function Todo() {
   }
   return (
     <>
+        <div className="row justify-content-center ms-4 mt-4">
+          <div className="col-8">
+            <FeaturesTabs/>
+          </div>
+        </div>
       <div className="container">
-        <div className="row justify-content-around todo">
+        <div className="row justify-content-around todo mt-4">
           <MydModalWithGrid
               textVal={text}
               show={modalShow}
@@ -128,7 +130,7 @@ function Todo() {
               add={addItem}
               changeText={(e) => setText(e.target.value)}
             ></MydModalWithGrid>
-            <Tabs/>
+           
             <DragDropContext onDragEnd={handleDragEnd}>
               {_?.map(state, (data, key) => {
                 return (

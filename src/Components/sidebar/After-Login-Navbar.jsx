@@ -8,6 +8,7 @@ import { useState,useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from "react-router-dom";
 import { Button} from "react-bootstrap"
+import { FiMessageCircle } from "react-icons/fi";
 function AfterLoginNavbar() {
     const [error,setError] = useState("")
     const {currentUser,logOut} = useAuth()
@@ -85,6 +86,8 @@ function AfterLoginNavbar() {
                     <Link className="ms-2 text-white text-decoration-none" to="/login-home"> My Projects</Link> </button> </li>
                     <li> <button className="nav-link border-0 bg-transparent"> <RiStackFill className="text-white"/>
                     <Link className="ms-2 text-white text-decoration-none" to="/add-todo"> My Tasks </Link> </button> </li>
+                    <li> <button className="nav-link border-0 bg-transparent"> <FiMessageCircle className="text-white"/>
+                    <Link className="ms-2 text-white text-decoration-none" to="/chat"> Chat </Link> </button> </li>
                 </ul>
             </nav>
         </section>

@@ -39,23 +39,22 @@ function UpdateProfile(props) {
     function handleSubmit(e){
        e.preventDefault()
         
-        const promises =[]
-        setLoading(true)
-        setError("")
-        usersCollection.doc(docId).update(userData);
-        if(passwordRef.current.value){
-           updatePassword(passwordRef.current.value)
-        }
-        if(passwordRef.current.value !== confirmPasswordRef.current.value){
-            return setError('password do not match')
-         }
-        Promise.all(promises).then(()=>{
-            navigate("/login")
-        }).catch(()=>{
+        try{
+            setLoading(true)
+            setError("")
+            usersCollection.doc(docId).update(userData);
+            if(passwordRef.current.value){
+               updatePassword(passwordRef.current.value)
+               navigate("/login")
+            }
+            if(passwordRef.current.value !== confirmPasswordRef.current.value){
+                return setError('password do not match')
+             }
+        }   
+        catch{
             setError('Failed to update an account')
-        }).finally(()=>{
-            setLoading(false)
-        })
+        }
+        setLoading(false)
      }
     return (
         <section className="update-profile__section">

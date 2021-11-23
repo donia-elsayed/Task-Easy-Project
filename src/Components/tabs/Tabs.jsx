@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Tab } from "react-bootstrap";
-
-function Tabs() {
-    const [key, setKey] = useState('home');
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+function FeaturesTabs() {
+    const [key, setKey] = useState('');
     return (
         <>
             <Tabs
@@ -10,20 +10,19 @@ function Tabs() {
                 activeKey={key}
                 onSelect={(k) => setKey(k)}
                 className="mb-3"
-            >
-                <Tab eventKey="home" title="Home">
-                {/* <Sonnet /> */}
+                >
+                <Tab eventKey="tasks" title="tasks">
+                </Tab> 
+                <Tab eventKey="chat" title="Chat">
                 </Tab>
-                <Tab eventKey="profile" title="Profile">
-                {/* <Sonnet /> */}
+                <Tab eventKey="allFiles" title="ALL Files">
                 </Tab>
-                <Tab eventKey="contact" title="Contact" disabled>
-                {/* <Sonnet /> */}
+                <Tab eventKey="charts" title="Charts">
                 </Tab>
             </Tabs>
         </>
     )
 }
 
-export default Tabs
+export default FeaturesTabs
  

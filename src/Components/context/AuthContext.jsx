@@ -1,11 +1,13 @@
 import React,{useContext, useState,useEffect} from "react"
-import {auth} from "../../firebase"
-import {usersCollection} from "../../firebase"
-const AuthContext = React.createContext()
+import {auth,usersCollection} from "../../firebase"
+// import {} from "../../firebase"
+import { createContext } from "react";
+export const AuthContext = createContext()
 export function useAuth(){
     return  useContext(AuthContext)
 }
 export function AuthProvider({children}) {
+  
     const [currentUser,setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
     async function signUp(name,email,password){
@@ -17,6 +19,7 @@ export function AuthProvider({children}) {
                 name,
                 authProvider: "local",
                 email,
+                photoURL:name.charAt(0).toUpperCase()
             });
         }
         catch(err){

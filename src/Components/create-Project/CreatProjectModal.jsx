@@ -4,8 +4,9 @@ import { Col,Form, FormGroup, Row } from 'react-bootstrap'
 import { useFormik } from "formik"
 import * as yup from "yup"
 import { useState} from "react"
+import { v4 } from "uuid";
+import {auth,projectsCollection} from '../../firebase'
 import './create-project.css'
-import {projectsCollection} from '../../firebase'
 
 function CreatProjectModal(props) {
     const [projectData,setProjectData] = useState({
@@ -14,7 +15,9 @@ function CreatProjectModal(props) {
         startDate:"",
         dueDate:"",
         projectDesc: "",
-        assignee:""
+        assignee:"",
+        id: v4(),
+        userId: auth.currentUser.uid,
     })
     const initialValues = {
         projectName: "",
@@ -22,7 +25,8 @@ function CreatProjectModal(props) {
         startDate:"",
         dueDate:"",
         projectDesc: "",
-        assignee:""
+        assignee:"",
+        userId: ""
     };
     const onSubmit = () => {
         projectsCollection.add(projectData) 

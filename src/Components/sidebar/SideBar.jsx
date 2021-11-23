@@ -9,21 +9,25 @@ import CreatProjectModal from '../create-Project/CreatProjectModal';
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { FaTasks } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
-import './SideBar.css'
 import Button from 'react-bootstrap/Button'
-export const SideBar = () => {
+import { auth } from "../../firebase";
+import './SideBar.css'
+export const SideBar = () => { 
+  const [modalShow, setModalShow] = useState(false);
+  const query =
+    auth.currentUser.uid &&
+    projectsCollection.where("userId", "==", auth.currentUser.uid);
+  const [projects] = useCollectionData(query, { idField: "id" });
+  const [allProject, setAllProjects] = useState(projects);
+  const navigate = useNavigate();
+  const addTask = () => {
+    navigate("/add-todo");
+  };
+  useEffect(() => {
+    setAllProjects(projects);
+    setModalShow(false)
+  }, [projects]);
 
-    
-      const [projects] = useCollectionData(projectsCollection,{ idField: "id" })
-      const [allProject,setAllProjects] = useState(projects);
-      const [modalShow, setModalShow] = useState(false);
-      const navigate = useNavigate();
-      const addTask = () =>{
-        navigate("/add-todo")
-      }
-        useEffect(()=>{
-            setAllProjects(projects)
-        },[projects])
     return (  
         <> 
             <div className="container">
