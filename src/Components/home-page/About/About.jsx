@@ -2,7 +2,6 @@ import React from "react";
 import about_us from "../../../assets/images/about_us.png";
 import "./About.css";
 import { BsBookmarkStar } from "react-icons/bs";
-
 import { BsClock } from "react-icons//bs";
 import { VscChecklist } from "react-icons//vsc";
 import { FiChevronRight } from "react-icons/fi";
@@ -32,7 +31,7 @@ export const About = () => {
                   impedit magnam obcaecati nesciunt impedit magnam obcaecati
                   nesciunt impedit magnam obcaecati nesciunt? Quisquam.
                 </p>
-                <button className="btn btn-default"> Learn more about us</button>
+                <button className="btn getStarted__btn bg-transparent border-0"> Learn more about us</button>
               </div>
             </div>
           </div>
@@ -45,52 +44,47 @@ export const About = () => {
       <div className="taskEasy_features py-5" id="features">
         <div className="container">
           <h1 className="text-center pb-5 text-capitalize"> our features</h1>
-          <div class="row">
-
-            
-            <div class="col-xl-4  col-md-6 col-sm-12 mb-5">
-              <div class="card">
-                <div class="card-body">
+          <div className="row">
+            <div className="col-xl-4  col-md-6 col-sm-12 mb-5">
+              <div className="card">
+                <div className="card-body">
                 <VscChecklist className ='fs-3 my-3 text-danger' />
-                  <h5 class="card-title">
+                  <h5 className="card-title">
                  
                    Scheduling
                   </h5>
                   <p class="card-text">
                   Our robust task management features let you create and assign tasks with multiple team members in seconds.
                   </p>
-                  <a href="#" className = 'text-info'> Learn more  <FiChevronRight/> </a>
+                  <button className = 'bg-transparent border-0 text-info'> Learn more  <FiChevronRight/> </button>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
-              <div class="card">
-                <div class="card-body">
+            <div className="col-xl-4 col-md-6 col-sm-12 mb-5">
+              <div className="card">
+                <div className="card-body">
                 < BsClock  className ='fs-3 my-3 text-danger' /> 
-                  <h5 class="card-title">
-                  
-                    Tracking
-                  </h5>
+                  <h5 class="card-title"> Tracking</h5>
                   <p class="card-text">
                   Set a planned start and end date of a task before the initiating operations and compare it with planned schedule.
                   </p>
-                  <a href="#" className = 'text-info' >  Learn more  <FiChevronRight/> </a>
+                  <button className = 'text-info bg-transparent border-0'>  Learn more  <FiChevronRight/> </button>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
-              <div class="card">
-                <div class="card-body">
+            <div className="col-xl-4 col-md-6 col-sm-12 mb-5">
+              <div className="card">
+                <div className="card-body">
                 <BsBookmarkStar className ='fs-3 my-3 text-danger ' />
                   <h5 class="card-title">
                      Prioritization 
                   </h5>
-                  <p class="card-text">
+                  <p className="card-text">
                   Create prioritization for your tasks to notify your team members about the tasks that need your utmost attention.
                   </p>
-                  <a href="#" className = 'text-info'> Learn more  <FiChevronRight/> </a>
+                  <button className = 'text-info bg-transparent border-0'> Learn more  <FiChevronRight/> </button>
                 </div>
               </div>
             </div>
@@ -98,16 +92,11 @@ export const About = () => {
          
           </div>
           <div className ="taskEasy_features-seeAll">
-          <button className ="btn btn-default"> View All Features </button>
+          <button className ="btn getStarted__btn"> View All Features </button>
           </div>
         </div>
       </div>
       {/* //  end features */}
-      <div className="footer">
-        <div className="container">
-
-        </div>
-      </div>
     </>
   );
 };

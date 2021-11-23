@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { useAuth } from "../../context/AuthContext";
 import registerImg from "../../../assets/images/register-img.png"
 import { Link} from "react-router-dom";
@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { BiEnvelopeOpen } from "react-icons/bi";
 import { FaUserCircle,FaLock } from "react-icons/fa";
 import {FcGoogle} from "react-icons/fc"
-import { Card, Form, Button, Alert, InputGroup } from "react-bootstrap";
+import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import "./signUp-style.scss"
 function SignUp() {
   const initialValues = {
@@ -16,29 +16,29 @@ function SignUp() {
     password: "",
     confirmPass: "",
   };
-  const usernameRef = useRef();
-  const emailRef  = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef()
   const {signUp} = useAuth()
+  const [signUpData,setSignUpData] = useState({
+    email: "",
+    name: "",
+  })
+  const [password,setPassword] = useState("")
+  const [confirmPass,setConfirmPass] = useState("")
   const [error,setError] = useState("")
   const [loading,setLoading] = useState(false)
      
-  function handleSubmit(e){
-    e.preventDefault()
-    if(passwordRef.current.value !== confirmPasswordRef.current.value){
-      return setError('password do not match')
+    async function handleSubmit(e){
+      e.preventDefault()
+      try{
+        setError('')
+        setLoading(true)
+        await signUp(signUpData.name,signUpData.email,password)
+      }
+      catch(err){
+        setError('Failed to create an account')
+        console.error(err)
+      }
+      setLoading(false)
     }
-    try{
-      setError('')
-      setLoading(true)
-      signUp(emailRef.current.value,usernameRef.current.value,passwordRef.current.value)
-    }
-    catch{
-      setError('Failed to create an account')
-    }
-    setLoading(false)
-  }
   const validationSchema = yup.object({
     username:yup.string().required("Username Field is required"),
     email: yup
@@ -52,7 +52,9 @@ function SignUp() {
         /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
         "Password must contain at least 8 characters, one uppercase, one number and one special case character"
       ),
-    confirmPass: yup.string().required("Password field is required"),
+    confirmPass: yup.string()
+      .required("Confirm Password field is required")
+      .oneOf([yup.ref('password'), null], '* Password must match')
   });
   const formik = useFormik({
     signUp,
@@ -62,12 +64,12 @@ function SignUp() {
   return (
      <section className="register__section">
         <div className="container">
-            <div className="row register__form m-auto justify-content-center align-items-center">
-              <h3 className="text-center text-capitalize text-danger">sign up</h3>
-              <div className="col-md-6 register__image">
+            <div className="row register__form">
+              <h3 className="text-center text-capitalize">sign up</h3>
+              <div className="col-md-6">
                 <img src={registerImg} alt="" className="w-100"/>
               </div>
-              <div className="col-md-6 register__form__item mb-5">
+              <div className="col-md-6 register__form__item justify-content-center align-items-center">
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit} className="m-auto w-75">
                   <Form.Group className="mb-2" controlId="username">
@@ -79,9 +81,14 @@ function SignUp() {
                       <Form.Control
                         type="text"
                         placeholder="Enter UserName"
-                        ref={usernameRef}
                         name="username"
-                        {...formik.getFieldProps("username")}
+                        value={signUpData.name}
+                        onChange={(e)=>{
+                          setSignUpData({...signUpData,name:e.target.value})
+                          formik.handleChange(e)
+                        }}
+                        
+                        onBlur={formik.handleBlur}
                         className={`${formik.touched.username && formik.errors.username && "is-invalid"}`}
                       />
                     </InputGroup>
@@ -100,8 +107,13 @@ function SignUp() {
                       <Form.Control
                         type="email"
                         placeholder="Enter Email"
-                        ref={emailRef}
-                        {...formik.getFieldProps("email")}
+                        name="email"
+                        value={signUpData.email}
+                        onChange={(e)=>{
+                          setSignUpData({...signUpData,email:e.target.value})
+                          formik.handleChange(e)
+                        }}
+                        onBlur={formik.handleBlur}
                         className={`${formik.touched.email && formik.errors.email && "is-invalid"}`}
                       />
                     </InputGroup>
@@ -122,8 +134,13 @@ function SignUp() {
                       <Form.Control
                         type="password"
                         placeholder="Enter Password"
-                        ref={passwordRef}
-                        {...formik.getFieldProps("password")}
+                        name="password"
+                        value={password}
+                        onChange={(e)=>{
+                          setPassword(e.target.value)
+                          formik.handleChange(e)
+                        }}
+                        onBlur={formik.handleBlur}
                         className={`${
                           formik.touched.password &&
                           formik.errors.password &&
@@ -146,8 +163,13 @@ function SignUp() {
                       <Form.Control
                         type="password"
                         placeholder="Enter Confirm Password"
-                        ref={confirmPasswordRef}
-                        {...formik.getFieldProps("confirmPass")}
+                        name="confirmPass"
+                        value={confirmPass}
+                        onChange={(e)=>{
+                          setConfirmPass(e.target.value)
+                          formik.handleChange(e)
+                        }}
+                        onBlur={formik.handleBlur}
                         className={`${
                           formik.touched.confirmPass &&
                           formik.errors.confirmPass &&

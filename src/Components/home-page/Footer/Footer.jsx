@@ -8,24 +8,24 @@ const Footer = () => {
         </div>
 
         <div>
-          <a href="" className="me-4 text-reset">
+          <button href="" className="me-4 text-reset border-0 bg-transparent">
             <i className="fab fa-facebook-f"></i>
-          </a>
-          <a href="" className="me-4 text-reset">
+          </button>
+          <button href="" className="me-4 text-reset border-0 bg-transparent">
             <i className="fab fa-twitter"></i>
-          </a>
-          <a href="" className="me-4 text-reset">
+          </button>
+          <button href="" className="me-4 text-reset border-0 bg-transparent">
             <i className="fab fa-google"></i>
-          </a>
-          <a href="" className="me-4 text-reset">
+          </button>
+          <button href="" className="me-4 text-reset border-0 bg-transparent">
             <i className="fab fa-instagram"></i>
-          </a>
-          <a href="" className="me-4 text-reset">
+          </button>
+          <button href="" className="me-4 text-reset border-0 bg-transparent">
             <i className="fab fa-linkedin"></i>
-          </a>
-          <a href="" className="me-4 text-reset">
+          </button>
+          <button href="" className="me-4 text-reset border-0 bg-transparent">
             <i className="fab fa-github"></i>
-          </a>
+          </button>
         </div>
       </section>
 

@@ -13,6 +13,9 @@
         top:50%;
         transform:translate(-50%,-50%);
         box-shadow: 0 5px 15px rgb(219, 224, 211);
+        h3{
+            color: #e5859b;
+        }
         form{
             .password__wrap{
                 position: relative;
@@ -22,6 +25,9 @@
                   text-align: center;
                   top:15%
                 }
+            }
+            .forget__pass{
+                color: #e5859b
             }
             button{
                 background-color: #e5859b;

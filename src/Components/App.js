@@ -3,14 +3,15 @@ import 'bootstrap/dist/js/bootstrap.js'
 import { AuthProvider } from './context/AuthContext';
 import SignUp from '../Components/auth/register/sign-up';
 import Login from '../Components/auth/login/Login';
-import ForgotPassword from './ForgotPassword';
+import ForgotPassword from '../Components/auth/forget-password/ForgotPassword';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import MainPage from './MainPage_view/MainPage';
 import SideBar from './sidebar/SideBar';
 import PrivateRoute from './PrivateRoute';
-import UpdateProfile from './UpdateProfile'
-import Dashboard from './Dashboard';
+import UpdateProfile from './edit-profile/UpdateProfile'
 import NavBar  from './home-page/Navbar/Nav';
+import Profile from '../Components/edit-profile/Profile';
+import Todo from './add-todo/Todo';
 function App() {
   return (
     <>
@@ -22,8 +23,11 @@ function App() {
           <Route path="/login-home" element={<PrivateRoute/>}>
             <Route path='/login-home' element={<SideBar/>}/>
           </Route>
-          <Route exact path="/dashboard" element={<PrivateRoute/>}>
-            <Route exact path='/dashboard' element={<Dashboard/>}/>
+          <Route exact path="/profile" element={<PrivateRoute/>}>
+            <Route exact path='/profile' element={<Profile/>}/>
+          </Route>
+          <Route exact path="/add-todo" element={<PrivateRoute/>}>
+            <Route exact path='/add-todo' element={<Todo/>}/>
           </Route>
           
           <Route path="/update-profile" element={<PrivateRoute/>}>

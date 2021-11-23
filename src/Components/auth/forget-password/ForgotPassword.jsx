@@ -1,8 +1,9 @@
 import { useRef, useState} from "react"
 import { Card ,Button,Form} from "react-bootstrap"
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import Alert from 'react-bootstrap/Alert'
 import { Link} from "react-router-dom";
+import "./forget-password.scss"
 function ForgotPassword() {
      const emailRef  = useRef();
      const {resetPassword} = useAuth()
@@ -24,10 +25,10 @@ function ForgotPassword() {
         setLoading(false)
      }
     return (
-        <>
-           <Card>
+        <section className="forgot-pass__section">
+           <Card className="d-flex justify-content-center align-items-center m-auto forgot-pass__card">
                 <Card.Body>
-                    <h2 className="text-center text-capitalize mb-4">Password Reset</h2>
+                    <h3 className="text-center text-capitalize mb-4">Password Reset</h3>
                     {error && <Alert variant="danger">{error}</Alert>}
                     {message && <Alert variant="success">{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
@@ -39,9 +40,9 @@ function ForgotPassword() {
                     </Form>
                     <div className="w-100 text-center mt-2"><Link to="/login">Log In</Link></div>
                 </Card.Body>
+                <div className="w-100 text-center mb-5">Need an account? <Link to="/signUp">Sign Up</Link></div>
             </Card> 
-            <div className="w-100 text-center mt-2">Need an account? <Link to="/signUp">Sign Up</Link></div>
-        </>
+        </section>
     )
 }
 export default ForgotPassword

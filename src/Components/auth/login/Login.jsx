@@ -21,12 +21,12 @@ function Login() {
      const [error,setError] = useState("")
      const [loading,setLoading] = useState(false)
      const navigate = useNavigate();
-     async function handleSubmit(e){
+      function handleSubmit(e){
        e.preventDefault()
         try{
             setError('')
             setLoading(true)
-            await logIn(emailRef.current.value,passwordRef.current.value)
+            logIn(emailRef.current.value,passwordRef.current.value)
             navigate("/login-home")
         }
         catch{
@@ -90,7 +90,7 @@ function Login() {
         <section className="login__section">
             <div className="container">
                 <div className="row login__form justify-content-center align-items-center">
-                    <h3 className="text-center text-capitalize text-danger">log in</h3>
+                    <h3 className="text-center text-capitalize">log in</h3>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <div className="col-md-6 login__image">
                         <img src={loginImg} alt="" className="w-100"/>
@@ -135,7 +135,7 @@ function Login() {
                                         <Form.Check type="checkbox" label="Remember Me" name="rememberMe"
                                         {...formik.getFieldProps("rememberMe")}/>
                                     </Form.Group>
-                                    <Link to="/forgot-password" className="text-danger">Forgot password?</Link>
+                                    <Link to="/forgot-password" className="forget__pass">Forgot password?</Link>
                                 </div>
                                 <Button variant="outline-danger" type="submit" className="d-block m-auto mb-1 text-white" disabled={loading}>Login</Button>
                                 <div className="d-flex justify-content-md-between">
@@ -143,7 +143,7 @@ function Login() {
                                     <span>OR</span>
                                     <div className="signIn__opt"></div>
                                 </div>
-                                <Button variant="outline-light" className="w-100 text-danger bg-light mt-2" onClick={signInWithFirebase}><FcGoogle className="text-center fs-4"></FcGoogle> Sign Up With Google</Button>
+                                <Button variant="outline-light" className="w-100 text-danger bg-light mt-2" onClick={signInWithFirebase}><FcGoogle className="text-center fs-4"></FcGoogle> Sign In With Google</Button>
                                 <div className="w-100 text-center mt-2 text-capitalize">Need an account? <Link to="/signUp" 
                                  className="text-danger">signUp</Link></div>
                             </Form>

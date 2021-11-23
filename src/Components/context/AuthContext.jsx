@@ -8,16 +8,22 @@ export function useAuth(){
 export function AuthProvider({children}) {
     const [currentUser,setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
-    async function signUp(email,name,password){
-        const res = await auth.createUserWithEmailAndPassword(email, password);
-        const user = res.user;
-        await usersCollection.add({
-          uid: user.uid,
-          email,
-          name,
-          authProvider: "local",
-          
-        });
+    async function signUp(name,email,password){
+        try{
+            const res = await auth.createUserWithEmailAndPassword(email, password);
+            const user = res.user;
+            await usersCollection.add({
+                uid: user.uid,
+                name,
+                authProvider: "local",
+                email,
+            });
+        }
+        catch(err){
+            console.error(err);
+        }
+        
+        
     }
     function logIn(email,password){
        return auth.signInWithEmailAndPassword(email,password)
@@ -27,12 +33,6 @@ export function AuthProvider({children}) {
     }
     function resetPassword(email){
         return  auth.sendPasswordResetEmail(email)
-    }
-    function updateUsername(username){
-        return currentUser.updateUsername(username)
-    }
-    function updateEmail(email){
-        return  currentUser.updateEmail(email)
     }
     function updatePassword(password){
         return currentUser.updatePassword(password)
@@ -51,9 +51,7 @@ export function AuthProvider({children}) {
         logIn,
         logOut,
         resetPassword,
-        updateEmail,
         updatePassword,
-        updateUsername
     }
     return (
         <AuthContext.Provider value={value}>

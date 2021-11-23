@@ -13,4 +13,5 @@ export const auth = app.auth()
 export const firestore = firebase.firestore();
 export const usersCollection = firestore.collection("users");
 export const projectsCollection = firestore.collection("projects");
+export const tasksCollection = firestore.collection("tasks");
 export default app ;

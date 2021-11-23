@@ -13,6 +13,7 @@ body {
 .home__navbar {
     width: 250px;
     height: 100vh;
+    top:0;
     position: fixed;
     margin-left: -300px;
     background-color: #0971ad;
@@ -31,10 +32,13 @@ body {
 .active{
     background-color: rgb(211, 207, 207);
 }
-/* .dropdown-menu {
-    background-color: #7952b3;
-} */
-
+.dropdown {
+   width:180px;
+}
+.profile__img{
+    display: inline-block;
+    width:20%;
+}
 .dropdown-item:active,
 .dropdown-item:focus,
 .dropdown-item:hover {
@@ -91,7 +95,8 @@ body {
     height: 11rem;
     border-radius: 25%;
     top:25%;
-    left:50%;
+    /* margin-left:100%; */
+    /* left:50%; */
     cursor: pointer;
     background-color: #36a5e6;
 }

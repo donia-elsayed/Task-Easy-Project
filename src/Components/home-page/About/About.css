@@ -9,7 +9,7 @@
   color: rgb(177, 173, 173);
 }
 
-.taskEasy__about button {
+.taskEasy__about .getStarted__btn {
     background-image: linear-gradient(
     to right,
     #dd5e89 0%,
