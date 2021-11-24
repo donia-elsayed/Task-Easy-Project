@@ -37,6 +37,9 @@ export function AuthProvider({children}) {
     function resetPassword(email){
         return  auth.sendPasswordResetEmail(email)
     }
+    function updateEmail(email){
+        return  currentUser.updateEmail(email)
+    }
     function updatePassword(password){
         return currentUser.updatePassword(password)
     }
@@ -54,6 +57,7 @@ export function AuthProvider({children}) {
         logIn,
         logOut,
         resetPassword,
+        updateEmail,
         updatePassword,
     }
     return (

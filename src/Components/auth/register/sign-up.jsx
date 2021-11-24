@@ -25,17 +25,24 @@ function SignUp() {
   const [confirmPass,setConfirmPass] = useState("")
   const [error,setError] = useState("")
   const [loading,setLoading] = useState(false)
-     
-    async function handleSubmit(e){
-      e.preventDefault()
+  const [message,setMessage] = useState()
+    async function onSubmit(){
+      // e.preventDefault()
       try{
+        setMessage('')
         setError('')
         setLoading(true)
         await signUp(signUpData.name,signUpData.email,password)
+        setMessage('Account Created Successfully')
+        setSignUpData({
+          email: "",
+          name: "",
+        })
+        setPassword("")
+        setConfirmPass("")
       }
-      catch(err){
+      catch{
         setError('Failed to create an account')
-        console.error(err)
       }
       setLoading(false)
     }
@@ -57,8 +64,8 @@ function SignUp() {
       .oneOf([yup.ref('password'), null], '* Password must match')
   });
   const formik = useFormik({
-    signUp,
     initialValues,
+    onSubmit,
     validationSchema,
   });
   return (
@@ -66,12 +73,13 @@ function SignUp() {
         <div className="container">
             <div className="row register__form">
               <h3 className="text-center text-capitalize">sign up</h3>
+              {error && <Alert variant="danger" className="text-center">{error}</Alert>}
+              {message && <Alert variant="success" className="text-center">{message}</Alert>}
               <div className="col-md-6">
                 <img src={registerImg} alt="" className="w-100"/>
               </div>
-              <div className="col-md-6 register__form__item justify-content-center align-items-center">
-                {error && <Alert variant="danger">{error}</Alert>}
-                <Form onSubmit={handleSubmit} className="m-auto w-75">
+              <div className="col-md-6 register__form__item justify-content-center align-items-center"> 
+                <Form onSubmit={formik.handleSubmit} className="m-auto w-75">
                   <Form.Group className="mb-2" controlId="username">
                     <Form.Label>UserName</Form.Label>
                     <InputGroup>
@@ -184,13 +192,6 @@ function SignUp() {
                     </div>
                   )}
                   <Button variant="outline-light" className="text-center register__btn d-block m-auto mt-2 text-white" type="submit" disabled={loading}>Register</Button>
-                  <div className="d-flex justify-content-md-between">
-                    <div className="signUp__option"></div>
-                    <span>OR</span>
-                    <div className="signUp__opt"></div>
-                  </div>
-                  <Button variant="outline-light" className="w-100 text-danger bg-light mt-2"><FcGoogle className="text-center fs-4"></FcGoogle> Sign Up With Google</Button>
-                  
                 </Form>
                 <div className="w-100 text-center mt-2">Already have an account? <Link to="/login" className="text-danger">Log In</Link> </div>
               </div>

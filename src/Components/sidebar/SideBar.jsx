@@ -1,9 +1,7 @@
 
 import {BsPlusCircleFill } from "react-icons/bs";
 import { Card, Form, FormControl} from "react-bootstrap"
-// import {useAuth} from "../context/AuthContext"
 import {useState,useEffect} from 'react'
-// import { Link } from 'react-router-dom'
 import {projectsCollection} from "../../firebase"
 import CreatProjectModal from '../create-Project/CreatProjectModal';
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -13,21 +11,21 @@ import Button from 'react-bootstrap/Button'
 import { auth } from "../../firebase";
 import './SideBar.css'
 export const SideBar = () => { 
-  const [modalShow, setModalShow] = useState(false);
-  const query =
-    auth.currentUser.uid &&
-    projectsCollection.where("userId", "==", auth.currentUser.uid);
-  const [projects] = useCollectionData(query, { idField: "id" });
-  const [allProject, setAllProjects] = useState(projects);
-  const navigate = useNavigate();
-  const addTask = () => {
-    navigate("/add-todo");
-  };
-  useEffect(() => {
-    setAllProjects(projects);
-    setModalShow(false)
-  }, [projects]);
-
+    const [modalShow, setModalShow] = useState(false);
+    const query =
+      auth.currentUser.uid &&
+      projectsCollection.where("userId", "==", auth.currentUser.uid);
+    const [projects] = useCollectionData(query, { idField: "id" });
+    const [allProject, setAllProjects] = useState(projects);
+    const navigate = useNavigate();
+    const addTask = (id) => {
+      navigate("/add-todo", { state: { projectId: id } });
+    };
+    useEffect(() => {
+      setAllProjects(projects);
+      setModalShow(false)
+    }, [projects]);
+     
     return (  
         <> 
             <div className="container">
@@ -59,7 +57,7 @@ export const SideBar = () => {
                     {
                         allProject?.map((proj)=>
                         (
-                            <div className="col-lg-2"  key={proj.id} onClick={addTask}>
+                            <div className="col-lg-2"  key={proj.id}  onClick={() => addTask(proj.id)}>
                                 <Card className="create__project">
                                     <Card.Body className="text-center text-white create__project__body">
                                         <Card.Subtitle className="mb-2"><FaTasks className="fs-1"></FaTasks></Card.Subtitle>

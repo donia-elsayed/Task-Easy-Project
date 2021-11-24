@@ -7,14 +7,23 @@ import { Droppable, DragDropContext, Draggable } from "react-beautiful-dnd";
 import { v4 } from "uuid";
 import MydModalWithGrid from "./Modal";
 import FeaturesTabs from "../tabs/Tabs"
+import { useLocation } from "react-router-dom";
 import "./Todo.css";
 //drag and drop must be strings
 
 function Todo() {
-  const [tasks] = useCollectionData(tasksCollection, { idField: "id" });
+  
+  const location = useLocation();
+
+  const proj = location.state.projectId;
+  const query = proj && tasksCollection.where("projectId", "==", proj);
+
+  const [tasks] = useCollectionData(query, { idField: "id" });
+  console.log(tasks, "collection");
+
   const [text, setText] = useState(tasks);
   const [modalShow, setModalShow] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [state, setState] = useState({
     todo: {
       title: "Todo",
@@ -111,9 +120,9 @@ function Todo() {
     }
   }, [tasks]);
 
-  if (loading) {
-    return <p>Data is loading...</p>;
-  }
+  // if (loading) {
+  //   return <p>Data is loading...</p>;
+  // }
   return (
     <>
         <div className="row justify-content-center ms-4 mt-4">
@@ -124,6 +133,7 @@ function Todo() {
       <div className="container">
         <div className="row justify-content-around todo mt-4">
           <MydModalWithGrid
+              projectId={proj}
               textVal={text}
               show={modalShow}
               onHide={() => setModalShow(false)}

@@ -21,12 +21,12 @@ function Login() {
      const [error,setError] = useState("")
      const [loading,setLoading] = useState(false)
      const navigate = useNavigate();
-      function handleSubmit(e){
-       e.preventDefault()
+      async function onSubmit(){
+    //    e.preventDefault()
         try{
             setError('')
             setLoading(true)
-            logIn(emailRef.current.value,passwordRef.current.value)
+            await logIn(emailRef.current.value,passwordRef.current.value)
             navigate("/login-home")
         }
         catch{
@@ -53,18 +53,10 @@ function Login() {
               });
             }
             navigate("/login-home")
-          } catch (err) {
+        } 
+        catch (err) {
             console.error(err);
-          }
-       
-    //    firebase.auth().signInWithPopup(google_provider)
-    //     .then((result)=>{
-    //         console.log(result)
-    //         navigate("/")
-    //     })
-    //     .catch((error)=>{
-    //         console.log(error)
-    //     })
+        }
      }
      const initialValues = {
         email: "",
@@ -80,7 +72,7 @@ function Login() {
     });
     const formik = useFormik({
         initialValues,
-        logIn,
+        onSubmit,
         validationSchema,
     });
     const [passwordShown, setPasswordShown] = useState(false);
@@ -92,13 +84,13 @@ function Login() {
             <div className="container">
                 <div className="row login__form justify-content-center align-items-center">
                     <h3 className="text-center text-capitalize">log in</h3>
-                    {error && <Alert variant="danger">{error}</Alert>}
+                    {error && <Alert variant="danger" className="text-center m-auto">{error}</Alert>}
                     <div className="col-md-6 login__image">
                         <img src={loginImg} alt="" className="w-100"/>
                     </div>
                     <div className="col-md-6 login__form__item">
                         <div className="d-flex justify-content-center align-items-center">
-                            <Form onSubmit={handleSubmit} className="w-75">
+                            <Form onSubmit={formik.handleSubmit} className="w-75">
                                 <Form.Group className="mb-2" controlId="Email">
                                     <Form.Label className="">Email address</Form.Label>
                                     <InputGroup>

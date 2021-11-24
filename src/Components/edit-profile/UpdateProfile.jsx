@@ -8,7 +8,7 @@ import "./update-profile.scss"
 function UpdateProfile(props) {
      const passwordRef = useRef();
      const confirmPasswordRef = useRef();
-     const {currentUser,updatePassword} = useAuth()
+     const {currentUser,updatePassword,updateEmail} = useAuth()
      const [error,setError] = useState("")
      const [loading,setLoading] = useState(false)
      const [docId,setDocId] = useState("")
@@ -37,31 +37,41 @@ function UpdateProfile(props) {
         setUserDate(userData)
     },[userData])
     function handleSubmit(e){
-       e.preventDefault()
-        
-        try{
-            setLoading(true)
-            setError("")
-            usersCollection.doc(docId).update(userData);
-            if(passwordRef.current.value){
-               updatePassword(passwordRef.current.value)
-               navigate("/login")
-            }
+        e.preventDefault()
+        const promises = []
+        setLoading(true)
+        setError("")
+        if(userData.authProvider === "local")
+        {
             if(passwordRef.current.value !== confirmPasswordRef.current.value){
                 return setError('password do not match')
-             }
-        }   
-        catch{
-            setError('Failed to update an account')
+            }
+            if(passwordRef.current.value){
+                promises.push(updatePassword(passwordRef.current.value))
+            }   
         }
-        setLoading(false)
-     }
+        if(userData.email !== currentUser.email){
+            promises.push(updateEmail(userData.email))
+        }
+        usersCollection.doc(docId).update(userData);
+       
+        Promise.all(promises)
+        .then(() => {
+            navigate("/login-home")
+        })
+        .catch(() => {
+            setError('Failed to update an account')
+        })
+        .finally(() => {
+            setLoading(false)
+        })  
+    }
     return (
         <section className="update-profile__section">
            <Card className="d-flex m-auto update-profile__card">
                 <Card.Body>
-                    <h3 className="text-center text-capitalize mb-2">Update Profile</h3>
-                    {error && <Alert variant="danger">{error}</Alert>}
+                    <h3 className="text-center text-capitalize">Update Profile</h3>
+                    {error && <Alert variant="danger" className="text-center">{error}</Alert>}
                     <Form onSubmit={handleSubmit} className="w-75 m-auto">
                     <Form.Group className="mb-2" controlId="username">
                             <Form.Label className="input__label">Username</Form.Label>
@@ -90,9 +100,9 @@ function UpdateProfile(props) {
                         </Form.Group>
                         </>
                         }
-                        <button type="submit" className="btn text-white update__btn d-flex justify-content-center w-auto m-auto mt-3" disabled={loading}>Update</button>
+                        <button type="submit" className="btn text-white update__btn d-flex justify-content-center w-auto m-auto mt-2" disabled={loading}>Update</button>
                     </Form>
-                    <div className="w-100 text-center mt-3"> <Link to="/login-home" className="text-info">Cancel</Link> </div>
+                    <div className="w-100 text-center mt-1"> <Link to="/login-home" className="text-info">Cancel</Link> </div>
                 </Card.Body>
             </Card> 
         </section>

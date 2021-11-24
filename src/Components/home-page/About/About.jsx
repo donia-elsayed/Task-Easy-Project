@@ -53,7 +53,7 @@ export const About = () => {
                  
                    Scheduling
                   </h5>
-                  <p class="card-text">
+                  <p className="card-text">
                   Our robust task management features let you create and assign tasks with multiple team members in seconds.
                   </p>
                   <button className = 'bg-transparent border-0 text-info'> Learn more  <FiChevronRight/> </button>
@@ -78,7 +78,7 @@ export const About = () => {
               <div className="card">
                 <div className="card-body">
                 <BsBookmarkStar className ='fs-3 my-3 text-danger ' />
-                  <h5 class="card-title">
+                  <h5 className="card-title">
                      Prioritization 
                   </h5>
                   <p className="card-text">

@@ -13,6 +13,7 @@ function MydModalWithGrid(props) {
     taskDesc: "",
     assignee: "",
     statusName: "Todo",
+    projectId: props.projectId,
   });
   const initialValues = {
     taskName: "",
@@ -20,6 +21,7 @@ function MydModalWithGrid(props) {
     taskDesc: "",
     assignee: "",
     statusName: "Todo",
+    projectId: "",
   };
 
   // const [text, setText] = useState("");
