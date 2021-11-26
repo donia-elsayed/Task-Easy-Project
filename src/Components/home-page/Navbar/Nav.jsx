@@ -8,12 +8,7 @@ import AfterLoginNavbar from "../../sidebar/After-Login-Navbar"
 /*start navbar */
 const NavBar = ({setShow ,show}) => {
   const {currentUser} = useAuth()
-  console.log(currentUser);
   const location = useLocation();
- console.log(location.pathname);
- console.log(currentUser ?true:false)
- console.log( location.pathname !== "/login")
- console.log( location.pathname !== "/signUp")
  const renderNavbar=()=>{
    return(
     <Navbar expand="lg" className="container" id="home__nav">
@@ -62,3 +57,13 @@ const NavBar = ({setShow ,show}) => {
 
 
 export default NavBar ;
+// currentUser ?
+          
+//              location.pathname !=='login' ? <AfterLoginNavbar setShow={setShow} show={show}/>:renderNavbar() ?
+//              location.pathname !=='signUp' && <AfterLoginNavbar setShow={setShow} show={show}/>:renderNavbar()
+//              :
+//              renderNavbar()
+//  console.log(location.pathname);
+//  console.log(currentUser ?true:false)
+//  console.log( location.pathname !== "/login")
+//  console.log( location.pathname !== "/signUp")
