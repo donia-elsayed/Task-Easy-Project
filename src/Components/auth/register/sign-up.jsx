@@ -6,7 +6,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { BiEnvelopeOpen } from "react-icons/bi";
 import { FaUserCircle,FaLock } from "react-icons/fa";
-import {FcGoogle} from "react-icons/fc"
 import { Form, Button, Alert, InputGroup } from "react-bootstrap";
 import "./signUp-style.scss"
 function SignUp() {

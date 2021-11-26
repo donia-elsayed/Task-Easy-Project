@@ -29,7 +29,7 @@ body {
 .nav-link:hover {
     background-color: #d1cdcd26; 
 }
-.active{
+.nav__active{
     background-color: rgb(211, 207, 207);
 }
 .dropdown {
@@ -42,7 +42,7 @@ body {
 .dropdown-item:active,
 .dropdown-item:focus,
 .dropdown-item:hover {
-    background-color: #ffffff26;
+    background-color: #ffffff26 !important;
 }
 
 .my-container {

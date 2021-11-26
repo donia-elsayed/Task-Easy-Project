@@ -19,7 +19,7 @@ export const SideBar = () => {
     const [allProject, setAllProjects] = useState(projects);
     const navigate = useNavigate();
     const addTask = (id) => {
-      navigate("/add-todo", { state: { projectId: id } });
+        navigate("/tabs", { state: { projectId: id } });
     };
     useEffect(() => {
       setAllProjects(projects);

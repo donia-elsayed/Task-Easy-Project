@@ -1,30 +1,27 @@
 import _ from "lodash";
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button} from "react-bootstrap";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { tasksCollection } from "../../firebase";
 import { Droppable, DragDropContext, Draggable } from "react-beautiful-dnd";
 import { v4 } from "uuid";
 import MydModalWithGrid from "./Modal";
-import FeaturesTabs from "../tabs/Tabs"
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import "./Todo.css";
 //drag and drop must be strings
 
 function Todo() {
-  
+  const navigate = useNavigate();
   const location = useLocation();
-
   const proj = location.state.projectId;
   const query = proj && tasksCollection.where("projectId", "==", proj);
 
   const [tasks] = useCollectionData(query, { idField: "id" });
-  console.log(tasks, "collection");
 
   const [text, setText] = useState(tasks);
   const [modalShow, setModalShow] = useState(false);
   // const [loading, setLoading] = useState(false);
-  const [state, setState] = useState({
+  const [singleTask, setSingleTask] = useState({
     todo: {
       title: "Todo",
       items: [],
@@ -42,8 +39,6 @@ function Todo() {
     if (!destination) {
       return;
     }
-    console.log(destination, source);
-
     if (
       destination.index === source.index &&
       destination.droppableId === source.droppableId
@@ -52,8 +47,8 @@ function Todo() {
     }
 
     // Creating a copy of item before removing it from state
-    const itemCopy = { ...state[source.droppableId].items[source.index] };
-    console.log(itemCopy);
+    const itemCopy = { ...singleTask[source.droppableId].items[source.index] };
+    console.log(itemCopy)
     tasksCollection.doc(itemCopy.id).update({
       ...itemCopy,
       statusName:
@@ -64,7 +59,7 @@ function Todo() {
           : "Todo",
     });
     // condition ? implem : condition2 ?implm :impl else
-    setState((prev) => {
+    setSingleTask((prev) => {
       prev = { ...prev };
       // Remove from previous items array
       prev[source.droppableId].items.splice(source.index, 1);
@@ -80,7 +75,7 @@ function Todo() {
     });
   };
   const addItem = () => {
-    setState((prev) => {
+    setSingleTask((prev) => {
       return {
         ...prev,
         todo: {
@@ -103,7 +98,7 @@ function Todo() {
 
   useEffect(() => {
     if (tasks) {
-      setState({
+      setSingleTask({
         todo: {
           title: "Todo",
           items: [...tasks.filter((elem) => elem.statusName === "Todo")],
@@ -118,6 +113,8 @@ function Todo() {
         },
       });
     }
+    // const taskId = [...tasks.map((elem)=> elem.id)];
+    // console.log(taskId);
   }, [tasks]);
 
   // if (loading) {
@@ -125,11 +122,6 @@ function Todo() {
   // }
   return (
     <>
-        <div className="row justify-content-center ms-4 mt-4">
-          <div className="col-8">
-            <FeaturesTabs/>
-          </div>
-        </div>
       <div className="container">
         <div className="row justify-content-around todo mt-4">
           <MydModalWithGrid
@@ -142,7 +134,7 @@ function Todo() {
             ></MydModalWithGrid>
            
             <DragDropContext onDragEnd={handleDragEnd}>
-              {_?.map(state, (data, key) => {
+              {_?.map(singleTask, (data, key) => {
                 return (
                   <div key={key} className="offset-lg-1 offset-md-0 col-lg-3 col-md-6 mb-5" >
                     <h3>{data.title}</h3>
@@ -171,12 +163,17 @@ function Todo() {
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
+                                        onClick={()=>{navigate('/task-Details',{state:{task:el}})
+                                      }
+                                        }
                                       >
                                         {el?.taskName}
                                       </div>
                                     );
                                   }}
+                                   
                                 </Draggable>
+                               
                               );
                             })}
                             {provided.placeholder}
@@ -198,7 +195,7 @@ function Todo() {
               })}
             </DragDropContext>
         </div>
-        {/* <div class="w-100"></div> */}
+        
         
       </div>
     </>

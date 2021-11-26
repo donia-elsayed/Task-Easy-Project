@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Form from "react-bootstrap/Form";
-// import { InputGroup } from "react-bootstrap";
-// import { useCollectionData } from "react-firebase-hooks/firestore";
 import { tasksCollection } from "../../firebase";
 function MydModalWithGrid(props) {
   const [taskData, setTaskData] = useState({
@@ -63,7 +61,7 @@ function MydModalWithGrid(props) {
             value={props.textVal}
             onChange={props.changeText}
           >
-            <Form.Label className="text-capitalize">project name</Form.Label>
+            <Form.Label className="text-capitalize">Task Name</Form.Label>
             <Form.Control
               placeholder="Enter Project Name"
               name="taskName"
@@ -104,7 +102,7 @@ function MydModalWithGrid(props) {
           </Row>
           <FormGroup className="mb-3" controlId="taskDescription">
             <Form.Label className="text-capitalize">
-              project description
+              Task Description
             </Form.Label>
             <Form.Control
               as="textarea"
@@ -145,7 +143,7 @@ function MydModalWithGrid(props) {
             type="submit"
             className="mt-3 text-capitalize float-end"
           >
-            create project{" "}
+            Create Task{" "}
           </Button>
         </Form>
       </Modal.Body>

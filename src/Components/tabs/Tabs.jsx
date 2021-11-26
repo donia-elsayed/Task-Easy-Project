@@ -1,26 +1,35 @@
-import { useState } from "react";
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
-function FeaturesTabs() {
-    const [key, setKey] = useState('');
+import BarCharts from "../charts/BarCharts";
+import ChatView from "../layout/ChatView";
+import Todo from "../add-todo/Todo";
+import ProjectDetails from '../project-details/ProjectDetails';
+import "./Tabs.css";
+function FeaturesTabs({show}) {
     return (
-        <>
+        <div className={`project__features ${show ?"active-cont":""}`}>
             <Tabs
                 id="controlled-tab-example"
-                activeKey={key}
-                onSelect={(k) => setKey(k)}
                 className="mb-3"
+                defaultActiveKey="tasks"
                 >
-                <Tab eventKey="tasks" title="tasks">
+                <Tab eventKey="tasks" title="Tasks">
+                    <Todo/>
                 </Tab> 
-                <Tab eventKey="chat" title="Chat">
+                <Tab eventKey="projectDetails" title="ProjectDetails">
+                    <ProjectDetails/>
                 </Tab>
-                <Tab eventKey="allFiles" title="ALL Files">
+                <Tab eventKey="chat" title="Chat">
+                    <ChatView/>
                 </Tab>
                 <Tab eventKey="charts" title="Charts">
+                    <BarCharts/>
+                </Tab>
+                <Tab eventKey="allFiles" title="ALL Files">
+                    All Files
                 </Tab>
             </Tabs>
-        </>
+        </div>
     )
 }
 

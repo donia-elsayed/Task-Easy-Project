@@ -8,7 +8,7 @@ import "./update-profile.scss"
 function UpdateProfile(props) {
      const passwordRef = useRef();
      const confirmPasswordRef = useRef();
-     const {currentUser,updatePassword,updateEmail} = useAuth()
+     const {currentUser,updatePassword,updateEmail,logOut} = useAuth()
      const [error,setError] = useState("")
      const [loading,setLoading] = useState(false)
      const [docId,setDocId] = useState("")
@@ -36,7 +36,7 @@ function UpdateProfile(props) {
     useEffect(()=>{
         setUserDate(userData)
     },[userData])
-    function handleSubmit(e){
+     function handleSubmit(e){
         e.preventDefault()
         const promises = []
         setLoading(true)
@@ -53,11 +53,12 @@ function UpdateProfile(props) {
         if(userData.email !== currentUser.email){
             promises.push(updateEmail(userData.email))
         }
-        usersCollection.doc(docId).update(userData);
+         usersCollection.doc(docId).update(userData);
        
         Promise.all(promises)
         .then(() => {
-            navigate("/login-home")
+            navigate("/login")
+            logOut()
         })
         .catch(() => {
             setError('Failed to update an account')

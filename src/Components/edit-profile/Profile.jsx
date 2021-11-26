@@ -35,7 +35,6 @@ function Profile() {
             <button type="submit" className="btn btn-info text-white d-flex justify-content-center w-auto m-auto mt-3">
               <Link to="/update-profile" className="text-white text-decoration-none fs-5">Update Profile</Link>
             </button>
-            
           </Card.Body>
         </Card> 
       </>

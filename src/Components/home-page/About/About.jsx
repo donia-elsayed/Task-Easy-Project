@@ -64,9 +64,9 @@ export const About = () => {
             <div className="col-xl-4 col-md-6 col-sm-12 mb-5">
               <div className="card">
                 <div className="card-body">
-                < BsClock  className ='fs-3 my-3 text-danger' /> 
-                  <h5 class="card-title"> Tracking</h5>
-                  <p class="card-text">
+                <BsClock  className ='fs-3 my-3 text-danger'/> 
+                  <h5 className="card-title"> Tracking</h5>
+                  <p className="card-text">
                   Set a planned start and end date of a task before the initiating operations and compare it with planned schedule.
                   </p>
                   <button className = 'text-info bg-transparent border-0'>  Learn more  <FiChevronRight/> </button>
