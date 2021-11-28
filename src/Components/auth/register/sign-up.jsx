@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useAuth } from "../../context/AuthContext";
 import registerImg from "../../../assets/images/register-img.png"
-import { Link} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { BiEnvelopeOpen } from "react-icons/bi";
@@ -25,14 +25,15 @@ function SignUp() {
   const [error,setError] = useState("")
   const [loading,setLoading] = useState(false)
   const [message,setMessage] = useState()
+  const navigate = useNavigate();
     async function onSubmit(){
-      // e.preventDefault()
       try{
         setMessage('')
         setError('')
         setLoading(true)
         await signUp(signUpData.name,signUpData.email,password)
-        setMessage('Account Created Successfully')
+        // setMessage('Account Created Successfully')
+        navigate("/login-home")
         setSignUpData({
           email: "",
           name: "",
@@ -68,9 +69,9 @@ function SignUp() {
     validationSchema,
   });
   return (
-     <section className="register__section">
+     <section className="register__section py-5">
         <div className="container">
-            <div className="row register__form">
+            <div className="row register__form py-4 mx-auto justify-content-center align-items-center">
               <h3 className="text-center text-capitalize">sign up</h3>
               {error && <Alert variant="danger" className="text-center">{error}</Alert>}
               {message && <Alert variant="success" className="text-center">{message}</Alert>}

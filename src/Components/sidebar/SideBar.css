@@ -6,8 +6,6 @@
 
 body {
     min-height: 100vh;
-  /* background-color: #eee; */
-
 }
 
 .home__navbar {
@@ -95,8 +93,7 @@ body {
     height: 11rem;
     border-radius: 25%;
     top:25%;
-    /* margin-left:100%; */
-    /* left:50%; */
+    position: static !important;
     cursor: pointer;
     background-color: #36a5e6;
 }

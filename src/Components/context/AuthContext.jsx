@@ -24,9 +24,7 @@ export function AuthProvider({children}) {
         }
         catch(err){
             console.error(err);
-        }
-        
-        
+        }   
     }
     function logIn(email,password){
        return auth.signInWithEmailAndPassword(email,password)

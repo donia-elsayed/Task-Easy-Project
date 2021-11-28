@@ -113,17 +113,11 @@ function Todo() {
         },
       });
     }
-    // const taskId = [...tasks.map((elem)=> elem.id)];
-    // console.log(taskId);
   }, [tasks]);
-
-  // if (loading) {
-  //   return <p>Data is loading...</p>;
-  // }
   return (
     <>
       <div className="container">
-        <div className="row justify-content-around todo mt-4">
+        <div className="row todo mt-4 justify-content-lg-center justify-content-md-start">
           <MydModalWithGrid
               projectId={proj}
               textVal={text}
@@ -136,7 +130,7 @@ function Todo() {
             <DragDropContext onDragEnd={handleDragEnd}>
               {_?.map(singleTask, (data, key) => {
                 return (
-                  <div key={key} className="offset-lg-1 offset-md-0 col-lg-3 col-md-6 mb-5" >
+                  <div key={key} className="col-lg-3 col-md-12 mb-5 drop__item__card" >
                     <h3>{data.title}</h3>
 
                     <Droppable droppableId={key}>
@@ -184,7 +178,7 @@ function Todo() {
                     {data.title === "Todo" && (
                       <Button
                         variant="outline-danger"
-                        className="mt-2 m-auto addDrop"
+                        className="mt-4 m-auto addDrop"
                         onClick={() => setModalShow(true)}
                       >
                         + Add Task

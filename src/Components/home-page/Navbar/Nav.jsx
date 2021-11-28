@@ -40,14 +40,12 @@ const NavBar = ({setShow ,show}) => {
       {
           currentUser ?
           (
-           ( location.pathname !=='login' 
-            ||   location.pathname !=='signUp')?
-           <AfterLoginNavbar setShow={setShow } show={show}/>:renderNavbar() 
+           <AfterLoginNavbar setShow={setShow } show={show}/>
           )
           :
           (
            renderNavbar()
-          )
+          )  
       }
     </>
         

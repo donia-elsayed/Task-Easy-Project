@@ -1,4 +1,3 @@
-
 import {BsPlusCircleFill } from "react-icons/bs";
 import { Card, Form, FormControl} from "react-bootstrap"
 import {useState,useEffect} from 'react'
@@ -10,7 +9,7 @@ import { useNavigate } from 'react-router';
 import Button from 'react-bootstrap/Button'
 import { auth } from "../../firebase";
 import './SideBar.css'
-export const SideBar = () => { 
+export const SideBar = ({ show }) => { 
     const [modalShow, setModalShow] = useState(false);
     const query =
       auth.currentUser.uid &&
@@ -28,9 +27,9 @@ export const SideBar = () => {
      
     return (  
         <> 
-            <div className="container">
-                <div className="row justify-content-center my-5">
-                    <div className="col-8">
+            <div className={`dash__features ${show ? "active-cont" : ""}`}>
+                <div className="my-5 ms-3">
+                    <div className="col-md-5 col-xs-12 m-auto">
                         <Form className="d-flex">
                             <FormControl
                             type="search"
@@ -42,9 +41,9 @@ export const SideBar = () => {
                         </Form>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="offset-lg-2 col-lg-2 col-md-3 col-sm-6">
-                        <Card className="create__project" onClick={() => setModalShow(true)}>
+                <div className="row m-0 m-auto">
+                    <div className="col-xl-2 col-lg-3 col-md-3 col-sm-5 mb-3 ms-3">
+                        <Card className="create__project m-auto" onClick={() => setModalShow(true)}>
                             <Card.Body className="text-center text-white create__project__body">
                                 <Card.Subtitle className="mb-2"><BsPlusCircleFill className="fs-1"></BsPlusCircleFill></Card.Subtitle>
                                 <Card.Title className="text-capitalize fs-5">create project</Card.Title>         
@@ -57,11 +56,17 @@ export const SideBar = () => {
                     {
                         allProject?.map((proj)=>
                         (
-                            <div className="col-lg-2"  key={proj.id}  onClick={() => addTask(proj.id)}>
-                                <Card className="create__project">
-                                    <Card.Body className="text-center text-white create__project__body">
-                                        <Card.Subtitle className="mb-2"><FaTasks className="fs-1"></FaTasks></Card.Subtitle>
-                                        <Card.Title className="text-capitalize fs-5">{proj.projectName}</Card.Title>
+                            <div className="col-xl-2 col-lg-3 col-md-3 col-sm-5 ms-3 mb-3"  
+                                key={proj.id}  
+                                onClick={() => addTask(proj.id)}>
+                                <Card className="create__project m-auto">
+                                    <Card.Body className="text-center text-white d-flex flex-wrap justify-content-center align-items-center flex">
+                                        <Card.Subtitle className="mb-2">
+                                            <FaTasks className="fs-1"></FaTasks>
+                                        </Card.Subtitle>
+                                        <Card.Title className="text-capitalize fs-5">
+                                            {proj.projectName}
+                                        </Card.Title>
                                     </Card.Body>
                                 </Card>
                             </div>

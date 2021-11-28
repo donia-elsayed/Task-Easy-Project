@@ -11,35 +11,35 @@ const ChatView = () => {
   return (
     <>
     <div className="container">
-      <div className="chat-card">
-        <div className="d-flex justify-content-around py-2">
-          <h1 className="text-primary">Chat</h1>
-          <form className="d-flex pt-2 pb-4">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-info text-white" type="submit">Search</button>
-          </form>
-        </div>
-          <div className="row justify-content-around">
-            <div className="col-4">
-              <div className="FriendList text-info">
-                <FriendList />
-              </div>
+      <div className="chat-card pt-3 mx-auto">
+        <div className="row justify-content-around bg-light">
+          <div className="d-flex align-items-baseline pt-2 mx-5">
+            <h1 className="text-info ms-3">Chat</h1>
+            <form className="d-flex pt-1 pb-3 w-50 ms-auto me-4">
+              <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
+              <button className="btn btn-info text-white" type="submit">Search</button>
+            </form>
+          </div>
+          <div className="col-lg-5 col-md-12  friend__card mb-5">
+            <div className="FriendList text-info mx-4">
+              <FriendList />
             </div>
-            <div className="col-5 px-4">
-              <div className="chat-area">
-                {secondUserData ? (
-                  <>
-                    <ChatTitle />
-                    <ChatContent />
-                    <ChatFooter />
-                  </>
-                ) : (
-                  <div className="welcome-msg">Welcome In Our Chat</div>
-                )}
-              </div>
+          </div>
+          <div className="col-lg-6 col-md-12 px-0">
+            <div className="chat-area">
+              {secondUserData ? (
+                <>
+                  <ChatTitle />
+                  <ChatContent />
+                  <ChatFooter />
+                </>
+              ) : (
+                <div className="welcome-msg">Welcome In Our Chat</div>
+              )}
             </div>
           </div>
         </div>
+      </div>
     </div>
     </>
   );

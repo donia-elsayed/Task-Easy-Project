@@ -22,7 +22,6 @@ function Login() {
      const [loading,setLoading] = useState(false)
      const navigate = useNavigate();
       async function onSubmit(){
-    //    e.preventDefault()
         try{
             setError('')
             setLoading(true)
@@ -80,15 +79,15 @@ function Login() {
         setPasswordShown(passwordShown ? false : true);
       };
     return (
-        <section className="login__section">
+        <section className="login__section py-5">
             <div className="container">
-                <div className="row login__form justify-content-center align-items-center">
+                <div className="row login__form py-4 mx-auto justify-content-center align-items-center">
                     <h3 className="text-center text-capitalize">log in</h3>
                     {error && <Alert variant="danger" className="text-center m-auto">{error}</Alert>}
-                    <div className="col-md-6 login__image">
+                    <div className="col-md-6 col-sm-12 login__image">
                         <img src={loginImg} alt="" className="w-100"/>
                     </div>
-                    <div className="col-md-6 login__form__item">
+                    <div className="col-md-6 col-sm-12 login__form__item">
                         <div className="d-flex justify-content-center align-items-center">
                             <Form onSubmit={formik.handleSubmit} className="w-75">
                                 <Form.Group className="mb-2" controlId="Email">
@@ -130,13 +129,17 @@ function Login() {
                                     </Form.Group>
                                     <Link to="/forgot-password" className="forget__pass">Forgot password?</Link>
                                 </div>
-                                <Button variant="outline-danger" type="submit" className="d-block m-auto mb-1 text-white" disabled={loading}>Login</Button>
-                                <div className="d-flex justify-content-md-between">
+                                <Button variant="outline-danger" type="submit" className="d-block m-auto mb-1 text-white" 
+                                disabled={loading}>Login</Button>
+                                <div className="d-flex justify-content-md-between align-items-center">
                                     <div className="signIn__option"></div>
-                                    <span>OR</span>
-                                    <div className="signIn__opt"></div>
+                                    <span className="px-2">OR</span>
+                                    <div className="signIn__option"></div>
                                 </div>
-                                <Button variant="outline-light" className="w-100 text-danger bg-light mt-2" onClick={signInWithFirebase}><FcGoogle className="text-center fs-4"></FcGoogle> Sign In With Google</Button>
+                                <Button variant="outline-light" className="w-100 text-danger bg-light mt-2" 
+                                    onClick={signInWithFirebase}>
+                                    <FcGoogle className="text-center fs-4"></FcGoogle> Sign In With Google
+                                </Button>
                                 <div className="w-100 text-center mt-2 text-capitalize">Need an account? <Link to="/signUp" 
                                  className="text-danger">signUp</Link></div>
                             </Form>

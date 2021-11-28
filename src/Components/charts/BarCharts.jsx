@@ -6,7 +6,7 @@ function BarCharts() {
     return (
       <div className="container">
         <div className="row justify-content-center align-items-center mt-3">
-        <div className="offset-1 col-lg-5">
+        <div className="col-lg-5 col-md-12 mb-5">
           <Bar
               data={{
                   labels:['Todo','Inprogress','Completed'],
@@ -33,9 +33,9 @@ function BarCharts() {
               }}
             /> 
           </div>
-          <div className="col-5">
+          <div className="col-lg-5 col-md-12">
             <div className="row flex-wrap">
-            <div className="col-lg-12 mb-3">
+            <div className="col-12 mb-5">
               <Pie
                 data={{
                     labels:['Todo','Inprogress','Completed'],
@@ -62,7 +62,7 @@ function BarCharts() {
                 }}
               /> 
             </div>
-              <div className="col-lg-12">
+              <div className="col-12">
                 <Doughnut
                     data={{
                         labels:['Todo','Inprogress','Completed'],

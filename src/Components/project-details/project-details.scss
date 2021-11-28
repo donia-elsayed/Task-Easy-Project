@@ -1,0 +1,19 @@
+.project__details__section{
+    margin:5rem 0;
+    .project__details__card{
+        width:45%;
+        border-radius: 1.5rem;
+        left:25%;
+        box-shadow: 0 5px 15px rgb(219, 224, 211);
+    }
+}
+@media screen and (min-width:320px) and (max-width:678px){
+    .project__details__card{
+        text-align: center;
+        width:65% !important;
+        span{
+            display: block;
+            width:100% !important;
+        }
+    }
+}

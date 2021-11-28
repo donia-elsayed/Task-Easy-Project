@@ -12,7 +12,6 @@ const FriendList = () => {
         ?.filter((data) => data.uid !== auth.currentUser.uid)
         ?.map((data,i) => (
           <div className="friend bg-white mb-2" key={i}> 
-
             <FriendInbox active data={data} key={data.uid} />
           </div>
         ))}

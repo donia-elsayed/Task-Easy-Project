@@ -7,16 +7,11 @@ import {RiStackFill} from "react-icons/ri"
 import { useState,useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from "react-router-dom";
+import SideBar from "./SideBar";
 function AfterLoginNavbar({show ,setShow}) {
     const [error,setError] = useState("")
     const {currentUser,logOut} = useAuth()
     const [username,setUsername] = useState("")
-    // const [show ,setShow]=useState(false)
-    // const show = () =>{
-    //     document.querySelector("#sidebar").classList.toggle("active-nav")
-    //     document.querySelector(".my-container").classList.toggle("active-cont")
-    // }
-   
     async function handleLogout(){
         setError('')
         try{
@@ -46,14 +41,11 @@ function AfterLoginNavbar({show ,setShow}) {
                 <div className= "navbar__section ps-2  pe-4 d-flex py-2">
                     <button className="btn me-3 " id="menu-btn" onClick={()=>{setShow(!show)}}> <BsJustify className="fs-3 text-white"/></button>
                         <figure className="m-0">
-                        
                             <img src= {logo} className="w-100" alt=""/>
                         </figure>
                         <ul className="d-flex align-items-baseline mb-0">
-                            
                             <li className= "px-3 text-capitalize"><BsChatText className="fs-4"/></li>
                             <li className= "px-3 text-capitalize"><BsBell className="fs-4"/></li>
-                            
                             <li className= "px-3 text-capitalize">  
                                 <div className="dropdown"> 
                                     <span className="profile__img me-2"><img src={person} alt="" className="rounded-circle me-2 w-100"/></span> 
@@ -85,8 +77,6 @@ function AfterLoginNavbar({show ,setShow}) {
                     <Link className="ms-2 text-white text-decoration-none" to="/login-home"> My Projects</Link> </button> </li>
                     <li> <button className="nav-link border-0 bg-transparent"> <RiStackFill className="text-white"/>
                     <Link className="ms-2 text-white text-decoration-none" to="/add-todo"> My Tasks </Link> </button> </li>
-                    {/* <li> <button className="nav-link border-0 bg-transparent"> <FiMessageCircle className="text-white"/>
-                    <Link className="ms-2 text-white text-decoration-none" to="/chat"> Chat </Link> </button> </li> */}
                 </ul>
             </nav>
         </section>
