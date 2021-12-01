@@ -79,17 +79,16 @@ function Login() {
         setPasswordShown(passwordShown ? false : true);
       };
     return (
-        <section className="login__section py-5">
+        <section className="login__section">
             <div className="container">
-                <div className="row login__form py-4 mx-auto justify-content-center align-items-center">
+                <div className="row login__form py-4 mx-auto">
                     <h3 className="text-center text-capitalize">log in</h3>
                     {error && <Alert variant="danger" className="text-center m-auto">{error}</Alert>}
-                    <div className="col-md-6 col-sm-12 login__image">
+                    <div className="login__image">
                         <img src={loginImg} alt="" className="w-100"/>
                     </div>
-                    <div className="col-md-6 col-sm-12 login__form__item">
-                        <div className="d-flex justify-content-center align-items-center">
-                            <Form onSubmit={formik.handleSubmit} className="w-75">
+                    <div className="login__form__item m-auto">
+                        <Form onSubmit={formik.handleSubmit} className="m-auto">
                                 <Form.Group className="mb-2" controlId="Email">
                                     <Form.Label className="">Email address</Form.Label>
                                     <InputGroup>
@@ -122,7 +121,7 @@ function Login() {
                                 {formik.touched.password && formik.errors.password && (
                                 <div className="text-danger">{formik.errors.password}</div>
                                 )}
-                                <div className="d-flex justify-content-between">
+                                <div className="d-flex justify-content-between login__remember__forgot">
                                     <Form.Group className="mb-2" controlId="rememberMe">
                                         <Form.Check type="checkbox" label="Remember Me" name="rememberMe"
                                         {...formik.getFieldProps("rememberMe")}/>
@@ -131,7 +130,7 @@ function Login() {
                                 </div>
                                 <Button variant="outline-danger" type="submit" className="d-block m-auto mb-1 text-white" 
                                 disabled={loading}>Login</Button>
-                                <div className="d-flex justify-content-md-between align-items-center">
+                                <div className="d-flex justify-content-between align-items-center login__options">
                                     <div className="signIn__option"></div>
                                     <span className="px-2">OR</span>
                                     <div className="signIn__option"></div>
@@ -144,7 +143,6 @@ function Login() {
                                  className="text-danger">signUp</Link></div>
                             </Form>
                         </div>
-                    </div>
                 </div>
             </div>   
         </section>  

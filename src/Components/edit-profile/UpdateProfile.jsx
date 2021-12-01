@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert'
 import { Link,useNavigate} from "react-router-dom";
 import {usersCollection} from "../../firebase"
 import "./update-profile.scss"
-function UpdateProfile(props) {
+function UpdateProfile({show}) {
      const passwordRef = useRef();
      const confirmPasswordRef = useRef();
      const {currentUser,updatePassword,updateEmail,logOut} = useAuth()
@@ -68,8 +68,8 @@ function UpdateProfile(props) {
         })  
     }
     return (
-        <section className="update-profile__section">
-           <Card className="d-flex m-auto update-profile__card">
+        <section className={`row justify-content-center update-profile__section gx-0 ${show?"active-cont":""}`}>
+             <Card className="col-md-6 update-profile__card">
                 <Card.Body>
                     <h3 className="text-center text-capitalize">Update Profile</h3>
                     {error && <Alert variant="danger" className="text-center">{error}</Alert>}

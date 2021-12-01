@@ -71,15 +71,15 @@ function SignUp() {
   return (
      <section className="register__section py-5">
         <div className="container">
-            <div className="row register__form py-4 mx-auto justify-content-center align-items-center">
+            <div className="row register__form py-4 mx-auto">
               <h3 className="text-center text-capitalize">sign up</h3>
               {error && <Alert variant="danger" className="text-center">{error}</Alert>}
               {message && <Alert variant="success" className="text-center">{message}</Alert>}
-              <div className="col-md-6">
+              <div className="col-md-6 register__image">
                 <img src={registerImg} alt="" className="w-100"/>
               </div>
-              <div className="col-md-6 register__form__item justify-content-center align-items-center"> 
-                <Form onSubmit={formik.handleSubmit} className="m-auto w-75">
+              <div className="col-md-6 register__form__item"> 
+                <Form onSubmit={formik.handleSubmit} className="m-auto">
                   <Form.Group className="mb-2" controlId="username">
                     <Form.Label>UserName</Form.Label>
                     <InputGroup>

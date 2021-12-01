@@ -7,6 +7,9 @@
 .all button{
   margin: auto;
 }
+/* .todo:first-child {
+  margin-left: 1%;
+} */
 .droppable-col {
   width: 100%;
   background-color: #77B9F2;
@@ -30,8 +33,8 @@
 .item.dragging {
   background-color: #e5859b;
 }
-@media screen and (min-width: 992px) and (max-width:1200px){
-  .drop__item__card{
-    width:33.33%;
+@media only screen and (max-width:375px) {
+  .modal__small {
+    width: 95% !important;
   }
 }

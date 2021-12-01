@@ -5,13 +5,14 @@ import * as yup from "yup";
 import Form from "react-bootstrap/Form";
 import { tasksCollection } from "../../firebase";
 function MydModalWithGrid(props) {
+  console.log(props)
   const [taskData, setTaskData] = useState({
     taskName: "",
     dueDate: "",
     taskDesc: "",
     assignee: "",
     statusName: "Todo",
-    projectId: props.projectId,
+    projectId: props.projectid,
   });
   const initialValues = {
     taskName: "",
@@ -19,7 +20,7 @@ function MydModalWithGrid(props) {
     taskDesc: "",
     assignee: "",
     statusName: "Todo",
-    projectId: "",
+    // projectId: "",
   };
 
   // const [text, setText] = useState("");
@@ -28,7 +29,7 @@ function MydModalWithGrid(props) {
   });
   const onSubmit = (values, state) => {
     tasksCollection.add(taskData);
-    props.add(state);
+    props.additem(state);
     setTaskData("");
   };
 
@@ -58,12 +59,12 @@ function MydModalWithGrid(props) {
           <Form.Group
             className="mb-3"
             controlId="taskName"
-            value={props.textVal}
-            onChange={props.changeText}
+            value={props.textval}
+            onChange={props.changetext}
           >
             <Form.Label className="text-capitalize">Task Name</Form.Label>
             <Form.Control
-              placeholder="Enter Project Name"
+              placeholder="Enter Task Name"
               name="taskName"
               value={taskData.taskName}
               onChange={(e) => {
@@ -106,7 +107,7 @@ function MydModalWithGrid(props) {
             </Form.Label>
             <Form.Control
               as="textarea"
-              placeholder="project description"
+              placeholder="Enter Task description"
               name="taskDesc"
               className="border-0 border-bottom create__input"
               value={taskData.taskDesc}
@@ -124,7 +125,7 @@ function MydModalWithGrid(props) {
             <Form.Label>Assignee</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Assignee"
+              placeholder="Enter Assignee"
               name="assignee"
               className="border-0 border-bottom create__input"
               value={taskData.assignee}

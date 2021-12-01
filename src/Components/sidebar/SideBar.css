@@ -97,10 +97,15 @@ body {
     cursor: pointer;
     background-color: #36a5e6;
 }
-.create__project__body{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+@media only screen and (min-width: 576px) and (max-width: 622px) {
+    .margin__r {
+      margin-right: 4rem !important;
+    } 
 }
+@media only screen and (min-width: 768px) and (max-width: 1400px) {
+    .margin__r {
+      margin-right: 3.5rem !important;
+    } 
+}
+  
+  

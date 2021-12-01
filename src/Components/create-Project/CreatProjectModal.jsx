@@ -6,12 +6,10 @@ import * as yup from "yup"
 import { useState} from "react"
 import { v4 } from "uuid";
 import {auth,projectsCollection} from '../../firebase'
-import './create-project.css'
-
 function CreatProjectModal(props) {
     const [projectData,setProjectData] = useState({
         projectName: "",
-        privacy:"public",
+        privacy:"",
         startDate:"",
         dueDate:"",
         projectDesc: "",
@@ -26,10 +24,11 @@ function CreatProjectModal(props) {
         dueDate:"",
         projectDesc: "",
         assignee:"",
-        userId: ""
     };
-    const onSubmit = () => {
+    const onSubmit = (values) => {
         projectsCollection.add(projectData) 
+        console.log(values , "formik");
+        console.log(projectData);
         setProjectData("")
     };
     const validationSchema = yup.object({
@@ -58,8 +57,6 @@ function CreatProjectModal(props) {
                         create project
                     </Modal.Title>
                 </Modal.Header>  
-                {/* {error && <Alert variant="danger">{error}</Alert>}
-                    {message && <Alert variant="success">{message}</Alert>}  */}
                 <Modal.Body>
                     <Form onSubmit={formik.handleSubmit}>
                         <Form.Group className="mb-3" controlId="projectName">
@@ -78,22 +75,20 @@ function CreatProjectModal(props) {
                         )}
                         <Form.Group className="mb-3 d-flex" controlId="privacy">
                             <Form.Check type="radio" name="privacy" label="public" 
-                             value={projectData.privacy}
-                             onChange={(e)=>{
-                                 setProjectData({...projectData,privacy:e.target.value})
-                                formik.handleChange(e)
-                             }}
-                             onBlur={formik.handleBlur} 
-                            
+                                value= "public"
+                                defaultChecked={formik.values.privacy === "public"}
+                                onChange={(e)=>{
+                                    setProjectData({...projectData,privacy:e.target.value})
+                                    formik.handleChange(e)
+                                }}
                             />
                         <Form.Check type="radio" name="privacy" label="private" className="ms-3"
-                            value={projectData.privacy}
+                            value="private"
+                            defaultChecked={formik.values.privacy === "private"}
                             onChange={(e)=>{
                                 setProjectData({...projectData,privacy:e.target.value})
                                 formik.handleChange(e)
-                            
                             }}
-                            
                             />
                         </Form.Group>
                         <Row className="mb-3">

@@ -6,36 +6,31 @@
     height: 100vh;
     overflow: hidden;
     .register__form{
-        background-color: #fff;
-        // height: 75vh;    
+        background-color: #fff;    
         border-radius: 1.5rem; 
         width:70%;
-        // position:absolute;
-        // left:50%;
-        // top:50%;
-        // transform:translate(-50%,-50%);
         box-shadow: 0 5px 15px rgb(219, 224, 211);
         h3{
             color: #e5859b; 
         }
         form{
+            width:75%;
             .register__btn{
                 background-color: #e5859b;
             }    
         }
     }
 }
-@media screen and (min-width: 768px) and (max-width:1200px){
+@media screen and (max-width:768px){
     .register__form{
-        height: 100vh;
         .register__image{
-            width:70%
+            width:55%;
+            margin:auto;
         }
-        .register__form__item{
-            width:90%;
-            Form.Label{
-              color:#77B9F2;
-            }
-        }
+    }
+}
+@media screen and (max-width:992px){
+    .register__form{
+        width: 100% !important;
     }
 }

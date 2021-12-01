@@ -1,4 +1,3 @@
-
 import logo from "../../assets/images/logo.png"
 import person from "../../assets/images/person.ico"
 import {usersCollection} from "../../firebase"
@@ -7,7 +6,6 @@ import {RiStackFill} from "react-icons/ri"
 import { useState,useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from "react-router-dom";
-import SideBar from "./SideBar";
 function AfterLoginNavbar({show ,setShow}) {
     const [error,setError] = useState("")
     const {currentUser,logOut} = useAuth()

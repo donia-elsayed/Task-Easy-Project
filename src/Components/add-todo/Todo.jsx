@@ -13,12 +13,12 @@ import "./Todo.css";
 function Todo() {
   const navigate = useNavigate();
   const location = useLocation();
-  const proj = location.state.projectId;
+  const proj = location.state.projectid;
   const query = proj && tasksCollection.where("projectId", "==", proj);
 
   const [tasks] = useCollectionData(query, { idField: "id" });
 
-  const [text, setText] = useState(tasks);
+  const [text, setText] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   // const [loading, setLoading] = useState(false);
   const [singleTask, setSingleTask] = useState({
@@ -117,20 +117,21 @@ function Todo() {
   return (
     <>
       <div className="container">
-        <div className="row todo mt-4 justify-content-lg-center justify-content-md-start">
+        <div className="row todo mt-4 m-auto">
           <MydModalWithGrid
-              projectId={proj}
-              textVal={text}
+              projectid={proj}
+              textval={text}
               show={modalShow}
+              className="modal__small"
               onHide={() => setModalShow(false)}
-              add={addItem}
-              changeText={(e) => setText(e.target.value)}
+              additem={addItem}
+              changetext={(e) => setText(e.target.value)}
             ></MydModalWithGrid>
            
             <DragDropContext onDragEnd={handleDragEnd}>
               {_?.map(singleTask, (data, key) => {
                 return (
-                  <div key={key} className="col-lg-3 col-md-12 mb-5 drop__item__card" >
+                  <div key={key} className="col-lg col-md-6 col-xs-4 mb-5" >
                     <h3>{data.title}</h3>
 
                     <Droppable droppableId={key}>

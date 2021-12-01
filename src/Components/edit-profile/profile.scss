@@ -1,16 +1,18 @@
-.update-profile__section{
+.profile__section{
     padding-top: 5rem;
-    .update-profile__card{
+    .profile__card{
         background-color: #fff;
-        // width:50%;
-        height: 71vh;
+        height: 40vh;
         position: static !important;
         border-radius: 1.5rem;
         box-shadow: 0 5px 15px rgb(219, 224, 211);
+        
         h3{
             color: #36a5e6;
         }
-        
+        span{
+            white-space: nowrap;
+        }
         .input__label{
             color:#36a5e6;
         }
@@ -19,6 +21,3 @@
         }
     }
 }
-// .active-cont {
-//     margin-left: 250px;
-// }

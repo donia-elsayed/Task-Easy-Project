@@ -4,7 +4,7 @@ import '../layout/Chat.scss'
 const ChatTitle = () => {
   const { secondUserData } = useContext(SecondUserContext);
   return (
-    <div className="chat-area-header bg-white px-4 py-2 text-info">
+    <div className="chat-area-header bg-white p-2 mx-4 text-info">
       <div className="chat-area-title text-capitalize fs-3"> 
         {
           secondUserData.authProvider === "local" ?

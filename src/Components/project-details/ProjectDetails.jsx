@@ -8,7 +8,7 @@ function ProjectDetails() {
     const [modalShow, setModalShow] = useState(false);
     const [projectDetails, setProjectDetails] = useState([]);
     const location = useLocation();
-    const proj = location.state.projectId;
+    const proj = location.state.projectid;
     const clickedProject = ()=> {
         projectsCollection.doc(proj).get()
         .then(projectDetails => setProjectDetails(projectDetails.data()));
@@ -52,6 +52,7 @@ function ProjectDetails() {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 project={projectDetails}
+                className="modal__small"
             />
         </section>
     )

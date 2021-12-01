@@ -14,11 +14,11 @@ const ChatView = () => {
       <div className="chat-card pt-3 mx-auto">
         <div className="row justify-content-around bg-light">
           <div className="d-flex align-items-baseline pt-2 mx-5">
-            <h1 className="text-info ms-3">Chat</h1>
-            <form className="d-flex pt-1 pb-3 w-50 ms-auto me-4">
-              <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
-              <button className="btn btn-info text-white" type="submit">Search</button>
-            </form>
+            <h3 className="text-info ms-3">Chat</h3>
+              <form className="d-flex pt-1 pb-3 w-50 ms-5">
+                <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
+                <button className="btn btn-info text-white ms-1" type="submit">Search</button>
+              </form>
           </div>
           <div className="col-lg-5 col-md-12  friend__card mb-5">
             <div className="FriendList text-info mx-4">

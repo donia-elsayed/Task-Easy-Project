@@ -5,6 +5,7 @@
     background-repeat: no-repeat,no-repeat;
     background-size: contain,contain;
     height: 100vh;
+    margin-top: 5rem;
     .login__form{
         background-color: #fff;
         border-radius: 1.5rem;
@@ -13,41 +14,65 @@
         h3{
             color: #e5859b;
         }
-        form{
-            .password__wrap{
-                position: relative;
-                .icon{
-                  position: absolute;
-                  right: 5%;
-                  text-align: center;
-                  top:15%
-                }
-            }
-            .forget__pass{
-                color: #e5859b
-            }
-            button{
-                background-color: #e5859b;
-            }
-            div{
-                .signIn__option{
-                    content: '';
-                    width: 7rem;
-                    height: 0.2rem;
-                    background-color: #e5859b;
-                }
-            }
+        .login__image{
+            width:40%
         }
-        
+        .login__form__item{
+            width:60%;
+            form{
+                width:75%;
+                .password__wrap{
+                    position: relative;
+                    .icon{
+                      position: absolute;
+                      right: 5%;
+                      text-align: center;
+                      top:15%
+                    }
+                }
+                .forget__pass{
+                    color: #e5859b
+                }
+                button{
+                    background-color: #e5859b;
+                    width:40%;
+                }
+                div{
+                    .signIn__option{
+                        content: '';
+                        width: 9rem;
+                        height: 0.2rem;
+                        background-color: #e5859b;
+                    }
+                }
+            }
+        }   
     }
 }
-@media screen and (min-width: 768px) and (max-width:1200px){
+@media screen and (min-width:320px) and (max-width:400px){
+    .login__remember__forgot{
+        display: block !important;
+        margin:0.8rem 0;
+    }
+}
+@media screen and (max-width:768px){
     .login__form{
+        .login__image{
+            width:55% !important;
+            margin:auto;
+        }
         .login__form__item{
-            width:70%;
-            Form.Label{
-              color:#77B9F2;
+            width: 100% !important;
+            form{
+                .login__options{
+                    justify-content: center;
+                }
             }
         }
+    }
+}
+@media screen and (max-width:992px){
+    .login__form{
+        width: 100% !important;
     }
 }

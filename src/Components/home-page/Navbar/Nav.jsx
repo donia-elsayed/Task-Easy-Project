@@ -2,13 +2,12 @@ import Button from "@restart/ui/esm/Button";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./Nav.css";
 import logo from "../../../assets/images/logo.png";
-import {Link,useLocation} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { useAuth } from "../../context/AuthContext";
 import AfterLoginNavbar from "../../sidebar/After-Login-Navbar"
 /*start navbar */
 const NavBar = ({setShow ,show}) => {
   const {currentUser} = useAuth()
-  const location = useLocation();
  const renderNavbar=()=>{
    return(
     <Navbar expand="lg" className="container" id="home__nav">
@@ -52,16 +51,4 @@ const NavBar = ({setShow ,show}) => {
   );
 }
 /*end navbar */
-
-
 export default NavBar ;
-// currentUser ?
-          
-//              location.pathname !=='login' ? <AfterLoginNavbar setShow={setShow} show={show}/>:renderNavbar() ?
-//              location.pathname !=='signUp' && <AfterLoginNavbar setShow={setShow} show={show}/>:renderNavbar()
-//              :
-//              renderNavbar()
-//  console.log(location.pathname);
-//  console.log(currentUser ?true:false)
-//  console.log( location.pathname !== "/login")
-//  console.log( location.pathname !== "/signUp")

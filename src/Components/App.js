@@ -29,16 +29,16 @@ function App() {
                 <Route path='/login-home' element={<SideBar show={show}/>}/>
               </Route>
               <Route exact path="/profile" element={<PrivateRoute/>}>
-                <Route exact path='/profile' element={<Profile/>}/>
+                <Route exact path='/profile' element={<Profile show={show}/>}/>
               </Route>
               <Route exact path="/task-details" element={<PrivateRoute/>}>
-                <Route exact path='/task-details' element={<TaskDetails/>}/>
+                <Route exact path='/task-details' element={<TaskDetails show={show}/>}/>
               </Route>
               <Route exact path="/tabs" element={<PrivateRoute/>}>
                 <Route exact path='/tabs' element={<FeaturesTabs show={show}/>}/>
               </Route>
               <Route path="/update-profile" element={<PrivateRoute/>}>
-                <Route path='/update-profile' element={<UpdateProfile/>}/>
+                <Route path='/update-profile' element={<UpdateProfile show={show}/>}/>
               </Route>
               <Route path="/signUp" element={<SignUp/>}></Route>
               <Route path="/login" element={<Login/>}></Route>

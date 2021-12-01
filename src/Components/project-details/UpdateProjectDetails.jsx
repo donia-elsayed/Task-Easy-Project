@@ -6,7 +6,7 @@ import { useLocation } from 'react-router';
 import { projectsCollection } from '../../firebase'
 function UpdateProjectDetails(props,project) {
     const location = useLocation();
-    const proj = location.state.projectId;
+    const proj = location.state.projectid;
     const [error,setError] = useState("")
     const [loading,setLoading] = useState(false)
     const [message,setMessage]= useState('')

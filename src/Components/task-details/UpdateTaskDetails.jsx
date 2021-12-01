@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Alert, Col, Form, FormGroup, Modal} from 'react-bootstrap'
 import Button from "react-bootstrap/Button"
 import { tasksCollection } from '../../firebase'
+import './task-details.scss'
 function UpdateTaskDetails(props,task) {
     const [docId,setDocId] = useState(props.task.id)
     const [error,setError] = useState("")
     const [loading,setLoading] = useState(false)
     const [message,setMessage]= useState('')
-    console.log(props.task)
+    console.log(props)
     const [taskData,setTaskData] = useState({
         taskName:"",
         dueDate:"",
@@ -65,7 +66,7 @@ function UpdateTaskDetails(props,task) {
                         </Form.Group>
                         <FormGroup className="mb-3" controlId="projectDescription">
                             <Form.Label className="text-capitalize">project description</Form.Label>
-                            <Form.Control as="textarea" placeholder="project description" name="projectDesc"
+                            <Form.Control as="textarea" placeholder="Enter Task description" name="projectDesc"
                                 className="border-0 border-bottom create__input" 
                                 defaultValue={props.task.taskDesc}
                                 onChange={(e)=>{setTaskData({...taskData,taskDesc:e.target.value})}}
@@ -74,7 +75,7 @@ function UpdateTaskDetails(props,task) {
                         
                         <Form.Group as={Col} controlId="assignee">
                             <Form.Label>Assignee</Form.Label>
-                            <Form.Control type="text" placeholder="Assignee" name="assignee"
+                            <Form.Control type="text" placeholder="Enter Assignee" name="assignee"
                                 className="border-0 border-bottom create__input" 
                                 defaultValue={props.task.assignee}
                                 onChange={(e)=>{setTaskData({...taskData,assignee:e.target.value})}}
@@ -82,8 +83,7 @@ function UpdateTaskDetails(props,task) {
                         </Form.Group>
                         <Button variant="primary" type="submit" 
                             className="mt-3 text-capitalize float-end"
-                            disabled={loading}
-                            >
+                            disabled={loading}>
                             Update Task
                         </Button>
                     </Form>

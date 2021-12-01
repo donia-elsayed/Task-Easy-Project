@@ -25,7 +25,7 @@ function FeaturesTabs({show}) {
                 <Tab eventKey="charts" title="Charts">
                     <BarCharts/>
                 </Tab>
-                <Tab eventKey="allFiles" title="ALL Files">
+                <Tab eventKey="allFiles" title="All Files">
                     All Files
                 </Tab>
             </Tabs>
