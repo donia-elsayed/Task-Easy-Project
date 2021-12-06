@@ -2,13 +2,20 @@
     padding-top: 5rem;
     .profile__card{
         background-color: #fff;
-        height: 40vh;
+        height: 50vh;
+        width:45%;
         position: static !important;
         border-radius: 1.5rem;
         box-shadow: 0 5px 15px rgb(219, 224, 211);
-        
+        .profile__img{
+            padding:2rem 4rem;
+            div{
+                font-size: 2.5rem;
+            }
+        }
         h3{
             color: #36a5e6;
+            margin-bottom: 3rem;
         }
         span{
             white-space: nowrap;
@@ -16,8 +23,50 @@
         .input__label{
             color:#36a5e6;
         }
-        .update__btn{
-           background-color: #36a5e6 !important;
+    }
+}
+@media screen and (min-width:320px) and (max-width:568px){
+    .profile__card{
+        text-align: center;
+        .img__container{
+            flex-direction: column !important;
         }
+    } 
+}
+@media screen and (min-width:320px) and (max-width:678px){
+    .profile__card{
+        width:85% !important; 
+        .img__container{
+            flex-direction: column !important;
+            .profile__img{
+                padding:1.5rem 3rem;
+                margin-bottom: 1rem;
+            }
+        }  
+    }
+}
+@media screen and (min-width:679px) and (max-width:768px) {
+    .profile__card{
+        width:85% !important;
+        .img__container{
+            .profile__img{
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+@media screen and (min-width:769px) and (max-width:992px) {
+    .profile__card{
+        width:72% !important;
+        .img__container{
+            .profile__img{
+                margin-right: 0.8rem;
+            }
+        }
+    }
+}
+@media screen and (min-width:993px) and (max-width:1200px) {
+    .profile__card{
+        width:60% !important;
     }
 }

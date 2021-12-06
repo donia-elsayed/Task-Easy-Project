@@ -10,8 +10,7 @@ const app = firebase.initializeApp({
     messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 })
-
-export const auth = app.auth()
+export const auth = app.auth();
 export const firestore = firebase.firestore();
 export const usersCollection = firestore.collection("users");
 export const projectsCollection = firestore.collection("projects");

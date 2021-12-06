@@ -1,12 +1,12 @@
 import {BsPlusCircleFill } from "react-icons/bs";
-import { Card, Form, FormControl} from "react-bootstrap"
+import { Card, Form,InputGroup} from "react-bootstrap"
 import {useState,useEffect} from 'react'
 import {projectsCollection} from "../../firebase"
 import CreatProjectModal from '../create-Project/CreatProjectModal';
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { FaTasks } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
-import Button from 'react-bootstrap/Button'
+import {GoSearch} from 'react-icons/go'
 import { auth } from "../../firebase";
 import './SideBar.css'
 export const SideBar = ({ show }) => { 
@@ -24,20 +24,40 @@ export const SideBar = ({ show }) => {
       setAllProjects(projects);
       setModalShow(false)
     }, [projects]);
-     
+     //start search
+    const searchByName = (e) => {
+        const keyword = e.target.value;
+        if (keyword !== '') {
+        const results = projects.filter((proj) => {
+            console.log (proj)
+            return  proj.projectName.toLowerCase().startsWith(keyword.toLowerCase());
+        
+        });
+        setAllProjects(results);
+        } else {
+        setAllProjects(projects);
+    
+        }
+    };
+  //end search
     return (  
         <section className="ms-3"> 
             <div className={`dash__features ${show ? "active-cont" : ""}`}>
                 <div className="my-5 ms-3">
                     <div className="col-md-8">
                         <Form className="d-flex">
-                            <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-2 p-2"
-                            aria-label="Search"
-                            />
-                            <Button variant="outline-info" className="bg-info text-white me-3">Search</Button>
+                            <InputGroup> 
+                                <Form.Control
+                                    type="search"
+                                    placeholder="Search"
+                                    onChange={searchByName}
+                                    className="p-2"
+                                    aria-label="Search">
+                                </Form.Control>
+                                <InputGroup.Text>
+                                    <GoSearch/>
+                                </InputGroup.Text>
+                            </InputGroup>  
                         </Form>
                     </div>
                 </div>

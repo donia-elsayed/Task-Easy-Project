@@ -6,28 +6,27 @@ import './task-details.scss'
 function UpdateTaskDetails(props,task) {
     const [docId,setDocId] = useState(props.task.id)
     const [error,setError] = useState("")
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
     const [message,setMessage]= useState('')
-    console.log(props)
+
     const [taskData,setTaskData] = useState({
         taskName:"",
         dueDate:"",
         taskDesc:"",
         assignee:""
     })
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
         try{
             setError('')
             setMessage('')
             setLoading(true)
-            tasksCollection.doc(docId).update(taskData)
+            await tasksCollection.doc(docId).update(taskData)
             setMessage("Updated Successfully")
         }
         catch{
             setError('Failed To Update Task')
         }
-        setLoading(false)
     }
     useEffect(()=>{
         setTaskData(task)     
@@ -54,14 +53,19 @@ function UpdateTaskDetails(props,task) {
                             <Form.Control placeholder="Enter Task Name" name="taskName"
                                className="border-0 border-bottom create__input"
                                defaultValue={props.task.taskName}
-                               onChange={(e)=>{setTaskData({...taskData,taskName:e.target.value})}}
+                               onChange={(e)=>{setTaskData({...taskData,taskName:e.target.value})
+                               setLoading(false)
+                               }}
                                />
                         </Form.Group>
                         <Form.Group as={Col} controlId="dueDate">
                             <Form.Label className="text-capitalize">due date</Form.Label>
                             <Form.Control type="date" className="border-0 border-bottom create__input"
                             name="dueDate" defaultValue={props.task.dueDate}
-                            onChange={(e)=>{setTaskData({...taskData,dueDate:e.target.value})}}
+                            onChange={(e)=>{
+                                setTaskData({...taskData,dueDate:e.target.value})
+                                setLoading(false)
+                            }}
                             />
                         </Form.Group>
                         <FormGroup className="mb-3" controlId="projectDescription">
@@ -69,7 +73,10 @@ function UpdateTaskDetails(props,task) {
                             <Form.Control as="textarea" placeholder="Enter Task description" name="projectDesc"
                                 className="border-0 border-bottom create__input" 
                                 defaultValue={props.task.taskDesc}
-                                onChange={(e)=>{setTaskData({...taskData,taskDesc:e.target.value})}}
+                                onChange={(e)=>{
+                                    setTaskData({...taskData,taskDesc:e.target.value})
+                                    setLoading(false)
+                                }}
                             />
                         </FormGroup>
                         
@@ -78,7 +85,10 @@ function UpdateTaskDetails(props,task) {
                             <Form.Control type="text" placeholder="Enter Assignee" name="assignee"
                                 className="border-0 border-bottom create__input" 
                                 defaultValue={props.task.assignee}
-                                onChange={(e)=>{setTaskData({...taskData,assignee:e.target.value})}}
+                                onChange={(e)=>{
+                                    setTaskData({...taskData,assignee:e.target.value})
+                                    setLoading(false)
+                                }}
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit" 

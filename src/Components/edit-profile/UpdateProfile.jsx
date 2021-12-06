@@ -69,7 +69,7 @@ function UpdateProfile({show}) {
     }
     return (
         <section className={`row justify-content-center update-profile__section gx-0 ${show?"active-cont":""}`}>
-             <Card className="col-md-6 update-profile__card">
+             <Card className="update-profile__card">
                 <Card.Body>
                     <h3 className="text-center text-capitalize">Update Profile</h3>
                     {error && <Alert variant="danger" className="text-center">{error}</Alert>}
@@ -101,9 +101,9 @@ function UpdateProfile({show}) {
                         </Form.Group>
                         </>
                         }
-                        <button type="submit" className="btn text-white update__btn d-flex justify-content-center w-auto m-auto mt-2" disabled={loading}>Update</button>
+                        <button type="submit" className="btn text-white update__btn d-flex justify-content-center m-auto mt-4" disabled={loading}>Update</button>
                     </Form>
-                    <div className="w-100 text-center mt-1"> <Link to="/login-home" className="text-info">Cancel</Link> </div>
+                    <button className="btn update__btn w-auto d-block mt-2 m-auto"> <Link to="/login-home" className="text-white text-decoration-none">Cancel</Link> </button>
                 </Card.Body>
             </Card> 
         </section>

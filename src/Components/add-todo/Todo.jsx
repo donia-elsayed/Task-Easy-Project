@@ -154,7 +154,7 @@ function Todo() {
                                       <div
                                         className={`item ${
                                           snapshot.isDragging && "dragging"
-                                        }`}
+                                        } d-flex justify-content-between align-items-baseline`}
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
@@ -162,7 +162,11 @@ function Todo() {
                                       }
                                         }
                                       >
-                                        {el?.taskName}
+                                        {/* {el?.taskName} */}
+                                        <div>{el?.taskName }</div>
+                                        <div className="d-flex justify-content-center align-items-center bg-light rounded-circle assignee__img">
+                                          <div className="text-info fs-4">{el?.assignee ? el.assignee.slice(0,1).toUpperCase(): ""}</div>
+                                        </div>
                                       </div>
                                     );
                                   }}

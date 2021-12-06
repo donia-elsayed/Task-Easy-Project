@@ -1,24 +1,47 @@
 .update-profile__section{
-    padding-top: 5rem;
+    padding-top: 4rem;
     .update-profile__card{
+        padding-top:1.5rem;
         background-color: #fff;
-        // width:50%;
-        height: 71vh;
+        width:50%;
+        height: auto;
         position: static !important;
         border-radius: 1.5rem;
         box-shadow: 0 5px 15px rgb(219, 224, 211);
         h3{
             color: #36a5e6;
         }
-        
         .input__label{
             color:#36a5e6;
         }
         .update__btn{
+            width:35%;
            background-color: #36a5e6 !important;
         }
     }
 }
-// .active-cont {
-//     margin-left: 250px;
-// }
+@media screen and (min-width:320px) and (max-width:568px){
+    .update-profile__card{
+        text-align: center;
+    } 
+}
+@media screen and (min-width:320px) and (max-width:678px){
+    .update-profile__card{
+        width:75% !important;  
+    }
+}
+@media screen and (min-width:679px) and (max-width:768px) {
+    .update-profile__card{
+        width:85% !important;
+    }
+}
+@media screen and (min-width:769px) and (max-width:992px) {
+    .update-profile__card{
+        width:70% !important;
+    }
+}
+@media screen and (min-width:993px) and (max-width:1200px) {
+    .update-profile__card{
+        width:65% !important;
+    }
+}

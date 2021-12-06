@@ -33,7 +33,7 @@ function ForgotPassword() {
                     {message && <Alert variant="success">{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-4 text-info" controlId="email">
-                            <Form.Label className="fs-4">Email</Form.Label>
+                            <Form.Label className="fs-5">Email</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" required ref={emailRef}/>
                         </Form.Group>
                         <Button variant="info" type="submit" className="w-100 d-block text-white m-auto" 

@@ -8,7 +8,7 @@ function UpdateProjectDetails(props,project) {
     const location = useLocation();
     const proj = location.state.projectid;
     const [error,setError] = useState("")
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
     const [message,setMessage]= useState('')
     const [docId,setDocId] = useState(proj)
     const [singleProject,setSingleProject]= useState({
@@ -18,26 +18,25 @@ function UpdateProjectDetails(props,project) {
         projectDesc:"",
         assignee:""
     });
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
         try{
             setError('')
             setLoading(true)
-            projectsCollection.doc(docId).update(singleProject);
+            await projectsCollection.doc(docId).update(singleProject);
             setMessage('Updated Successfully');
             console.log(singleProject)
         }
         catch{
-           setError('Failed to Update Project Details')
-        }
-       setLoading(false)
+            setError('Failed to Update Project Details') 
+        }  
     }
     useEffect(()=>{
         setSingleProject(project) 
     },[project])
     return (
         <>
-           <Modal
+            <Modal
                 {...props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
@@ -57,7 +56,11 @@ function UpdateProjectDetails(props,project) {
                             <Form.Control placeholder="Enter Project Name" name="projectName"
                                className="border-0 border-bottom create__input"
                                defaultValue={props.project.projectName}
-                               onChange={(e)=>setSingleProject({...singleProject,projectName:e.target.value})}
+                               onChange={(e)=>{
+                                setSingleProject({...singleProject,projectName:e.target.value})
+                                setLoading(false)
+                               }  
+                            }
                                />
                         </Form.Group>
                         <Row className="mb-3">
@@ -66,7 +69,10 @@ function UpdateProjectDetails(props,project) {
                                     <Form.Label className="text-capitalize">start date</Form.Label>
                                     <Form.Control type="date" className="border-0 border-bottom create__input"
                                     name="startDate" defaultValue={props.project.startDate} 
-                                    onChange={(e)=>setSingleProject({...singleProject,startDate:e.target.value})}/>
+                                    onChange={(e)=>{
+                                        setSingleProject({...singleProject,startDate:e.target.value})
+                                        setLoading(false)
+                                    }}/>
                                 </Form.Group>
                             </div>
                             <div className="col-6">
@@ -74,7 +80,10 @@ function UpdateProjectDetails(props,project) {
                                     <Form.Label className="text-capitalize">due date</Form.Label>
                                     <Form.Control type="date" className="border-0 border-bottom create__input"
                                     name="dueDate" defaultValue={props.project.dueDate}
-                                    onChange={(e)=>setSingleProject({...singleProject,dueDate:e.target.value})}/>
+                                    onChange={(e)=>{
+                                        setSingleProject({...singleProject,dueDate:e.target.value})
+                                        setLoading(false)
+                                    }}/>
                                 </Form.Group> 
                             </div>
                         </Row>
@@ -83,19 +92,22 @@ function UpdateProjectDetails(props,project) {
                             <Form.Control as="textarea" placeholder="project description" name="projectDesc"
                                 className="border-0 border-bottom create__input" 
                                 defaultValue={props.project.projectDesc}
-                                onChange={(e)=>setSingleProject({...singleProject,projectDesc:e.target.value})}
-                                />
+                                onChange={(e)=>{
+                                    setSingleProject({...singleProject,projectDesc:e.target.value})
+                                    setLoading(false)
+                                }}/>
                         </FormGroup>
-                        
                         <Form.Group as={Col} controlId="assignee">
                             <Form.Label>Assignee</Form.Label>
                             <Form.Control type="text" placeholder="Assignee" name="assignee"
                             className="border-0 border-bottom create__input" 
                             defaultValue={props.project.assignee}
-                            onChange={(e)=>setSingleProject({...singleProject,assignee:e.target.value})}
+                            onChange={(e)=>{
+                                setSingleProject({...singleProject,assignee:e.target.value})
+                                setLoading(false)
+                            }}
                             />
                         </Form.Group>
-                        
                         <Button variant="primary" type="submit" 
                             className="mt-3 text-capitalize float-end"
                             disabled={loading}>

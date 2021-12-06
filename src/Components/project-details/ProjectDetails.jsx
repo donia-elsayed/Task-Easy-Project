@@ -17,7 +17,7 @@ function ProjectDetails() {
         clickedProject()
     },[])
     return (
-        <section className="project__details__section">
+        <section className="row justify-content-center project__details__section">
             <Card className="project__details__card">
                 <Card.Body>
                     <Card.Title><h3 className="text-center text-capitalize mb-4 text-info">Project Details</h3></Card.Title>

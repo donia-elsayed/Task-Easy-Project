@@ -33,6 +33,10 @@
 .item.dragging {
   background-color: #e5859b;
 }
+.assignee__img{
+  width:15%;
+  padding:0.3rem 0;
+}
 @media only screen and (max-width:375px) {
   .modal__small {
     width: 95% !important;

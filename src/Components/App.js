@@ -6,7 +6,6 @@ import Login from '../Components/auth/login/Login';
 import ForgotPassword from '../Components/auth/forget-password/ForgotPassword';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import MainPage from './MainPage_view/MainPage';
-import SideBar from './sidebar/SideBar';
 import PrivateRoute from './PrivateRoute';
 import UpdateProfile from './edit-profile/UpdateProfile'
 import NavBar  from './home-page/Navbar/Nav';
@@ -15,6 +14,7 @@ import SecondUserProvider from './context/secondUser';
 import FeaturesTabs from './tabs/Tabs';
 import TaskDetails from './task-details/TaskDetails';
 import { useState } from 'react';
+import SideBar  from './sidebar/SideBar';
 function App() {
   const [show ,setShow]= useState(false);
   return (

@@ -24,19 +24,26 @@ function Profile({show}) {
     })
     return (
       <section className={`row justify-content-center profile__section gx-0 ${show?"active-cont":""}`}>
-        <Card className="col-lg-6 profile__card">
-          <Card.Body className="m-auto">
-            <Card.Title><h3 className="text-center text-capitalize mb-4 text-info">Profile</h3></Card.Title>
-            <Card.Text>
-              <strong className="text-info fs-5">Email: </strong>
-              <span>{currentUser.email}</span>  
-            </Card.Text>
-            <Card.Text>
-              <strong className="text-info fs-5">Username: </strong>
-              <span>{username}</span>
-            </Card.Text>
-            <button type="submit" className="btn btn-info text-white d-flex justify-content-center w-auto m-auto mt-5">
-              <Link to="/update-profile" className="text-white text-decoration-none fs-5">Update Profile</Link>
+        <Card className="profile__card">
+          <Card.Body >
+            <Card.Title><h3 className="text-center text-capitalize text-info">Profile</h3></Card.Title>
+            <div className="d-flex justify-content-evenly align-items-center img__container">
+              <div className="d-flex justify-content-center align-items-center bg-light rounded-circle profile__img">
+                <div className="text-info">{username.slice(0,2).toUpperCase()}</div>
+              </div>
+              <div>
+                <Card.Text>
+                  <strong className="text-info">Email: </strong>
+                  <span>{currentUser.email}</span>  
+                </Card.Text>
+                <Card.Text>
+                  <strong className="text-info">Username: </strong>
+                  <span>{username}</span>
+                </Card.Text>
+              </div>
+            </div>
+            <button type="submit" className="btn btn-info text-white d-block w-auto m-auto mt-3">
+              <Link to="/update-profile" className="text-white text-decoration-none">Update Profile</Link>
             </button>
           </Card.Body>
         </Card> 

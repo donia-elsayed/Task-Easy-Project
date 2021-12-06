@@ -2,6 +2,7 @@ import { Modal,FormGroup, Row, Col, Button } from "react-bootstrap";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { v4 } from "uuid";
 import Form from "react-bootstrap/Form";
 import { tasksCollection } from "../../firebase";
 function MydModalWithGrid(props) {
@@ -12,6 +13,7 @@ function MydModalWithGrid(props) {
     taskDesc: "",
     assignee: "",
     statusName: "Todo",
+    id: v4(),
     projectId: props.projectid,
   });
   const initialValues = {
@@ -29,7 +31,7 @@ function MydModalWithGrid(props) {
   });
   const onSubmit = (values, state) => {
     tasksCollection.add(taskData);
-    props.additem(state);
+    props.additem();
     setTaskData("");
   };
 

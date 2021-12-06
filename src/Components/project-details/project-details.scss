@@ -1,20 +1,33 @@
 .project__details__section{
     margin:5rem 0;
     .project__details__card{
-        // width:50%;
-        // left:30%;
+        padding: 2rem 0;
+        width:50%;
         position: static !important;
         border-radius: 1.5rem;
         box-shadow: 0 5px 15px rgb(219, 224, 211);
+        span{
+            white-space: nowrap;
+        }
     }
+}
+@media screen and (min-width:320px) and (max-width:568px){
+    .project__details__card{
+        text-align: center;
+    } 
 }
 @media screen and (min-width:320px) and (max-width:678px){
     .project__details__card{
-        text-align: center;
-        // width:65% !important;
-        span{
-            display: block;
-            width:100% !important;
-        }
+        width:70% !important;  
+    }
+}
+@media screen and (min-width:679px) and (max-width:768px) {
+    .project__details__card{
+        width:85% !important;
+    }
+}
+@media screen and (min-width:769px) and (max-width:992px) {
+    .project__details__card{
+        width:70% !important;
     }
 }
