@@ -48,7 +48,6 @@ function Todo() {
 
     // Creating a copy of item before removing it from state
     const itemCopy = { ...singleTask[source.droppableId].items[source.index] };
-    console.log(itemCopy)
     tasksCollection.doc(itemCopy.id).update({
       ...itemCopy,
       statusName:

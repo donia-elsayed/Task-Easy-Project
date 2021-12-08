@@ -5,8 +5,8 @@ import * as yup from "yup";
 import { v4 } from "uuid";
 import Form from "react-bootstrap/Form";
 import { tasksCollection } from "../../firebase";
+
 function MydModalWithGrid(props) {
-  console.log(props)
   const [taskData, setTaskData] = useState({
     taskName: "",
     dueDate: "",
@@ -22,16 +22,15 @@ function MydModalWithGrid(props) {
     taskDesc: "",
     assignee: "",
     statusName: "Todo",
-    // projectId: "",
   };
 
-  // const [text, setText] = useState("");
   const validationSchema = yup.object({
     taskName: yup.string().required("Enter Title"),
   });
+  
   const onSubmit = (values, state) => {
+    props.additem(state);
     tasksCollection.add(taskData);
-    props.additem();
     setTaskData("");
   };
 

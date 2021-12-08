@@ -32,7 +32,6 @@ function SignUp() {
         setError('')
         setLoading(true)
         await signUp(signUpData.name,signUpData.email,password)
-        // setMessage('Account Created Successfully')
         navigate("/login-home")
         setSignUpData({
           email: "",
@@ -40,6 +39,7 @@ function SignUp() {
         })
         setPassword("")
         setConfirmPass("")
+        
       }
       catch{
         setError('Failed to create an account')

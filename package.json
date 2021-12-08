@@ -1,4 +1,5 @@
 {
+  "homepage": "https://donia-elsayed.github.io/Task-Easy-Project",
   "name": "portfolio-app",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +11,7 @@
     "chart.js": "^3.6.0",
     "firebase": "^9.4.1",
     "formik": "^2.2.9",
+    "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
@@ -24,6 +26,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
