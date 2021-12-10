@@ -174,25 +174,20 @@ html {
     border-radius: 50%;
   }
 }
-
 .chat-msg-img {
   height: 40px;
   width: 40px;
   border-radius: 50%;
   object-fit: cover;
+  background: white;
 }
 
 .chat-msg-profile {
   flex-shrink: 0;
   margin-top: auto;
-  margin-bottom: -20px;
-  position: relative;
 }
 
 .chat-msg-date {
-  position: absolute;
-  left: calc(100% + 12px);
-  bottom: 0;
   font-size: 12px;
   font-weight: 600;
   color: var(--msg-date);
@@ -252,13 +247,13 @@ html {
 .chat-area-footer {
   display: flex;
   border-top: 1px solid var(--border-color);
-  width: 100%;
+  width: 90%;
   padding: 10px 20px;
   align-items: center;
   background-color: var(--theme-bg-color);
   position: sticky;
   bottom: 0;
-  left: 0;
+  left: 1.56rem;
   form {
     width: 100%;
     display: flex;
@@ -272,8 +267,6 @@ html {
     }
   }
 }
-
-
 
 .chat-area-footer input {
   border: none;

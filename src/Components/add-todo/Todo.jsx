@@ -20,7 +20,6 @@ function Todo() {
 
   const [text, setText] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  // const [loading, setLoading] = useState(false);
   const [singleTask, setSingleTask] = useState({
     todo: {
       title: "Todo",

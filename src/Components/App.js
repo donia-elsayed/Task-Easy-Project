@@ -31,8 +31,8 @@ function App() {
               <Route exact path="/profile" element={<PrivateRoute/>}>
                 <Route exact path='/profile' element={<Profile show={show}/>}/>
               </Route>
-              <Route exact path="/task-details" element={<PrivateRoute/>}>
-                <Route exact path='/task-details' element={<TaskDetails show={show}/>}/>
+              <Route  path="/task-details" element={<PrivateRoute/>}>
+                <Route  path='/task-details' element={<TaskDetails show={show}/>}/>
               </Route>
               <Route exact path="/tabs" element={<PrivateRoute/>}>
                 <Route exact path='/tabs' element={<FeaturesTabs show={show}/>}/>

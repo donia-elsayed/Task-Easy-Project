@@ -1,7 +1,6 @@
 import doniaImg from "../../../assets/images/team-img.png";
 import marwa from "../../../assets/images/team2.jpg";
 import mayar from "../../../assets/images/pp.jpg";
-// import donia from "../../../assets/images/team1.jpg";
 import "./Team.scss";
 const Team = () => {
   return (

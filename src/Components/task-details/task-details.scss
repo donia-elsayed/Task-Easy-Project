@@ -5,6 +5,12 @@
         border-radius: 1.5rem;
         left:25%;
         box-shadow: 0 5px 15px rgb(219, 224, 211);
+        .update_task{
+            color:#36a5e6
+        }
+        .update__task__btn{
+            background-color: #36a5e6;
+        }
     }
 }
 @media screen and (min-width:320px) and (max-width:725px){

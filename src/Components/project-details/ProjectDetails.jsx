@@ -11,8 +11,13 @@ function ProjectDetails() {
     const proj = location.state.projectid;
     const clickedProject = ()=> {
         projectsCollection.doc(proj).get()
-        .then(projectDetails => setProjectDetails(projectDetails.data()));
+        .then(projectDetails => 
+            setProjectDetails(projectDetails.data()));
     }
+    useEffect(()=>{    
+        clickedProject()
+        console.log("new project")
+    },[modalShow])
     useEffect(()=>{
         clickedProject()
     },[])
@@ -20,29 +25,29 @@ function ProjectDetails() {
         <section className="row justify-content-center project__details__section">
             <Card className="project__details__card">
                 <Card.Body>
-                    <Card.Title><h3 className="text-center text-capitalize mb-4 text-info">Project Details</h3></Card.Title>
+                    <Card.Title><h3 className="text-center text-capitalize mb-4 update__color">Project Details</h3></Card.Title>
                     <Card.Text>
-                        <strong className="text-info">Project Name : </strong> 
+                        <strong className="update__color">Project Name : </strong> 
                         <span>{projectDetails.projectName}</span>
                     </Card.Text>
                     <Card.Text>
-                        <strong className="text-info">Start Date: </strong>
+                        <strong className="update__color">Start Date: </strong>
                         <span>{projectDetails.startDate}</span>
                     </Card.Text>
                     <Card.Text>
-                        <strong className="text-info">Due Date: </strong>
+                        <strong className="update__color">Due Date: </strong>
                         <span>{projectDetails.dueDate}</span>
                     </Card.Text>
                     <Card.Text>
-                        <strong className="text-info">Project Description : </strong> 
+                        <strong className="update__color">Project Description : </strong> 
                         <span>{projectDetails.projectDesc}</span>
                     </Card.Text>
                     <Card.Text>
-                        <strong className="text-info">Assignee : </strong> 
+                        <strong className="update__color">Assignee : </strong> 
                         <span>{projectDetails.assignee}</span>
                     </Card.Text>
                     <button type="submit" 
-                    className="btn btn-info text-white d-flex justify-content-center w-auto m-auto mt-3"
+                    className="btn update__btn text-white d-flex justify-content-center w-auto m-auto mt-3"
                     onClick={() => setModalShow(true)}>
                     Update Project Details
                     </button>
@@ -53,6 +58,7 @@ function ProjectDetails() {
                 onHide={() => setModalShow(false)}
                 project={projectDetails}
                 className="modal__small"
+                setModalShow={setModalShow}
             />
         </section>
     )

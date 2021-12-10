@@ -12,7 +12,7 @@ const ChatView = () => {
     <>
     <div className="container">
       <div className="chat-card pt-3 mx-auto">
-        <div className="row justify-content-around bg-light">
+        <div className="row justify-content-around bg-light pb-4">
           <div className="d-flex align-items-baseline pt-2 mx-5">
             <h3 className="text-info ms-3">Chat</h3>
               <form className="d-flex pt-1 pb-3 w-50 ms-5">

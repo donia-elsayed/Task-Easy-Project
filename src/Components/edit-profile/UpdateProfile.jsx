@@ -74,7 +74,7 @@ function UpdateProfile({show}) {
                     <h3 className="text-center text-capitalize">Update Profile</h3>
                     {error && <Alert variant="danger" className="text-center">{error}</Alert>}
                     <Form onSubmit={handleSubmit} className="w-75 m-auto">
-                    <Form.Group className="mb-2" controlId="username">
+                        <Form.Group className="mb-2" controlId="username">
                             <Form.Label className="input__label">Username</Form.Label>
                             <Form.Control type="text" placeholder="Enter username" required 
                               defaultValue={userData.name}

@@ -9,17 +9,7 @@ const FriendInbox = ({ data }) => {
       onClick={() => setSecondUserData(data)}
     >
       <div className="msg-profile group">
-        {
-          data.authProvider === "local" ?
-          (
-           <div> {data?.photoURL} </div>  
-          )
-          :
-          (
-            <img src={data?.photoURL} alt=""/>
-          )
-        }
-        
+        <div> {data?.photoURL} </div> 
       </div>
       <div className="msg-detail">
         <div className="msg-username">{data?.name}</div>

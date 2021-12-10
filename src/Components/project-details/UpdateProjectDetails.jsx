@@ -9,7 +9,6 @@ function UpdateProjectDetails(props,project) {
     const proj = location.state.projectid;
     const [error,setError] = useState("")
     const [loading,setLoading] = useState(true)
-    const [message,setMessage]= useState('')
     const [docId,setDocId] = useState(proj)
     const [singleProject,setSingleProject]= useState({
         projectName:"",
@@ -24,8 +23,7 @@ function UpdateProjectDetails(props,project) {
             setError('')
             setLoading(true)
             await projectsCollection.doc(docId).update(singleProject);
-            setMessage('Updated Successfully');
-            console.log(singleProject)
+            props.setModalShow(false)
         }
         catch{
             setError('Failed to Update Project Details') 
@@ -48,7 +46,6 @@ function UpdateProjectDetails(props,project) {
                     </Modal.Title>
                 </Modal.Header>  
                 {error && <Alert variant="danger" className="text-center">{error}</Alert>}
-                {message && <Alert variant="success" className="text-center">{message}</Alert>} 
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="projectName">
@@ -110,7 +107,7 @@ function UpdateProjectDetails(props,project) {
                         </Form.Group>
                         <Button variant="primary" type="submit" 
                             className="mt-3 text-capitalize float-end"
-                            disabled={loading}>
+                            disabled={loading} >
                             Update project 
                         </Button>
                     </Form>

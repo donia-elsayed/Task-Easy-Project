@@ -5,6 +5,7 @@ import ChatView from "../layout/ChatView";
 import Todo from "../add-todo/Todo";
 import ProjectDetails from '../project-details/ProjectDetails';
 import "./Tabs.css";
+import { Link } from 'react-router-dom';
 function FeaturesTabs({show}) {
     return (
         <div className={`project__features ${show ?"active-cont":""}`}>
@@ -13,8 +14,10 @@ function FeaturesTabs({show}) {
                 className="mb-3"
                 defaultActiveKey="tasks"
                 >
+                    <Link></Link>
+
                 <Tab eventKey="tasks" title="Tasks">
-                    <Todo/>
+                   <Todo/>
                 </Tab> 
                 <Tab eventKey="projectDetails" title="ProjectDetails">
                     <ProjectDetails/>
@@ -32,6 +35,4 @@ function FeaturesTabs({show}) {
         </div>
     )
 }
-
 export default FeaturesTabs
- 

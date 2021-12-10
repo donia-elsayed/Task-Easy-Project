@@ -48,7 +48,7 @@ function Login() {
                 name: user.displayName,
                 authProvider: "google",
                 email: user.email,
-                photoURL:user.photoURL
+                photoURL:user.displayName.charAt(0).toUpperCase(),
               });
             }
             navigate("/login-home")

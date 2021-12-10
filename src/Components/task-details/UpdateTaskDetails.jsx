@@ -4,11 +4,8 @@ import Button from "react-bootstrap/Button"
 import { tasksCollection } from '../../firebase'
 import './task-details.scss'
 function UpdateTaskDetails(props,task) {
-    const [docId,setDocId] = useState(props.task.id)
     const [error,setError] = useState("")
     const [loading,setLoading] = useState(true)
-    const [message,setMessage]= useState('')
-
     const [taskData,setTaskData] = useState({
         taskName:"",
         dueDate:"",
@@ -19,10 +16,9 @@ function UpdateTaskDetails(props,task) {
         e.preventDefault()
         try{
             setError('')
-            setMessage('')
             setLoading(true)
-            await tasksCollection.doc(docId).update(taskData)
-            setMessage("Updated Successfully")
+            await tasksCollection.doc(props.taskId).update(taskData)
+            props.setModalShow(false)
         }
         catch{
             setError('Failed To Update Task')
@@ -45,7 +41,6 @@ function UpdateTaskDetails(props,task) {
                     </Modal.Title>
                 </Modal.Header>  
                 {error && <Alert variant="danger" className="text-center">{error}</Alert>}
-                {message && <Alert variant="success" className="text-center">{message}</Alert>} 
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="projectName">

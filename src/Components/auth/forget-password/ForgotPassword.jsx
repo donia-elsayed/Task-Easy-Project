@@ -28,21 +28,21 @@ function ForgotPassword() {
         <section className="forgot-pass__section">
            <Card className="d-flex justify-content-center align-items-center m-auto forgot-pass__card py-5">
                 <Card.Body className="w-75">
-                    <h4 className="text-center text-capitalize mb-4 text-info">Reset Password</h4>
+                    <h4 className="text-center text-capitalize mb-4 forgetPass__color">Reset Password</h4>
                     {error && <Alert variant="danger">{error}</Alert>}
                     {message && <Alert variant="success">{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-4 text-info" controlId="email">
+                        <Form.Group className="mb-4 forgetPass__color" controlId="email">
                             <Form.Label className="fs-5">Email</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" required ref={emailRef}/>
                         </Form.Group>
-                        <Button variant="info" type="submit" className="w-100 d-block text-white m-auto" 
-                        disabled={loading}>Reset Password</Button>
+                        <button  type="submit" className="btn forgetPass__btn w-50 d-block text-white m-auto" 
+                        disabled={loading}>Reset Password</button>
                     </Form>
                     <div className="w-100 text-center mt-2">
                         <Link to="/login" className="text-danger fs-5">Login</Link>
                     </div>
-                    <div className="w-100 text-center mt-2 text-info fs-5">Need an account? 
+                    <div className="w-100 text-center mt-2 forgetPass__color fs-5">Need an account? 
                         <Link to="/signUp" className="text-danger">SignUp</Link>
                     </div>
                 </Card.Body>

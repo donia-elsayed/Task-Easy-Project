@@ -9,7 +9,16 @@
         span{
             white-space: nowrap;
         }
+        .update__color{
+            color:#36a5e6
+        }
+        .update__btn{
+            background-color: #36a5e6;
+        }
     }
+}
+.active-cont {
+    margin-left: 250px;
 }
 @media screen and (min-width:320px) and (max-width:568px){
     .project__details__card{

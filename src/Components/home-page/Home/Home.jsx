@@ -18,7 +18,7 @@ const Home = () => {
               </p>
               <Button className="getStarted__btn btn btn-default">Get started</Button>
             </div>
-            <div className="col-md-6 img-fluid ">
+            <div className="col-md-6 img-fluid pt-5">
               <img src={home3} alt="me"></img>
             </div>
           </div>

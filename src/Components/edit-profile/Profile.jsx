@@ -1,4 +1,3 @@
-// import {useState} from 'react'
 import { Card } from "react-bootstrap"
 import {useAuth} from "../context/AuthContext"
 import { Link } from 'react-router-dom'
@@ -26,23 +25,23 @@ function Profile({show}) {
       <section className={`row justify-content-center profile__section gx-0 ${show?"active-cont":""}`}>
         <Card className="profile__card">
           <Card.Body >
-            <Card.Title><h3 className="text-center text-capitalize text-info">Profile</h3></Card.Title>
+            <Card.Title><h3 className="text-center text-capitalize profile__color">Profile</h3></Card.Title>
             <div className="d-flex justify-content-evenly align-items-center img__container">
               <div className="d-flex justify-content-center align-items-center bg-light rounded-circle profile__img">
-                <div className="text-info">{username.slice(0,2).toUpperCase()}</div>
+                <div className="profile__color">{username.slice(0,2).toUpperCase()}</div>
               </div>
               <div>
                 <Card.Text>
-                  <strong className="text-info">Email: </strong>
+                  <strong className="profile__color">Email: </strong>
                   <span>{currentUser.email}</span>  
                 </Card.Text>
                 <Card.Text>
-                  <strong className="text-info">Username: </strong>
+                  <strong className="profile__color">Username: </strong>
                   <span>{username}</span>
                 </Card.Text>
               </div>
             </div>
-            <button type="submit" className="btn btn-info text-white d-block w-auto m-auto mt-3">
+            <button type="submit" className="btn profile__btn text-white d-block w-auto m-auto mt-3">
               <Link to="/update-profile" className="text-white text-decoration-none">Update Profile</Link>
             </button>
           </Card.Body>
@@ -52,4 +51,3 @@ function Profile({show}) {
 }
 
 export default Profile
-
