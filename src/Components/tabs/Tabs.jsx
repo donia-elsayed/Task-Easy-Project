@@ -14,8 +14,6 @@ function FeaturesTabs({show}) {
                 className="mb-3"
                 defaultActiveKey="tasks"
                 >
-                    <Link></Link>
-
                 <Tab eventKey="tasks" title="Tasks">
                    <Todo/>
                 </Tab> 
@@ -29,7 +27,7 @@ function FeaturesTabs({show}) {
                     <BarCharts/>
                 </Tab>
                 <Tab eventKey="allFiles" title="All Files">
-                    All Files
+                    
                 </Tab>
             </Tabs>
         </div>

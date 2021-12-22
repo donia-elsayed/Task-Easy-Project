@@ -42,7 +42,7 @@ function AfterLoginNavbar({show ,setShow}) {
                             <img src= {logo} className="w-100" alt=""/>
                         </figure>
                         <ul className="d-flex align-items-baseline mb-0">
-                            <li className= "px-3 text-capitalize"><BsChatText className="fs-4"/></li>
+                            {/* <li className= "px-3 text-capitalize"><BsChatText className="fs-4"/></li> */}
                             <li className= "px-3 text-capitalize"><BsBell className="fs-4"/></li>
                             <li className= "px-3 text-capitalize">  
                                 <div className="dropdown"> 

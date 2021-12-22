@@ -25,7 +25,8 @@ function MydModalWithGrid(props) {
   };
 
   const validationSchema = yup.object({
-    taskName: yup.string().required("Enter Title"),
+    taskName: yup.string().required("Title Field Is Required"),
+    assignee:yup.string().required("Assignee Field Is Required")
   });
   
   const onSubmit = (values, state) => {
@@ -79,7 +80,6 @@ function MydModalWithGrid(props) {
           {formik.touched.taskName && formik.errors.taskName && (
             <div className="text-danger mb-2">{formik.errors.taskName}</div>
           )}
-
           <Row className="mb-3">
             <div className="col-6">
               <Form.Group as={Col} controlId="dueDate">
@@ -97,9 +97,6 @@ function MydModalWithGrid(props) {
                   onBlur={formik.handleBlur}
                 />
               </Form.Group>
-              {formik.touched.dueDate && formik.errors.dueDate && (
-                <div className="text-danger mt-2">{formik.errors.dueDate}</div>
-              )}
             </div>
           </Row>
           <FormGroup className="mb-3" controlId="taskDescription">
@@ -119,9 +116,6 @@ function MydModalWithGrid(props) {
               onBlur={formik.handleBlur}
             />
           </FormGroup>
-          {formik.touched.taskDesc && formik.errors.taskDesc && (
-            <div className="text-danger mb-2">{formik.errors.taskDesc}</div>
-          )}
           <Form.Group as={Col} controlId="assignee">
             <Form.Label>Assignee</Form.Label>
             <Form.Control
