@@ -5,8 +5,8 @@ This project is a task management system that you can manage your project and te
 can change task status through the kanban board
 
 Get Up and Running
-npm install 
-npm start 
+1- npm install 
+2- npm start 
 
 
 
